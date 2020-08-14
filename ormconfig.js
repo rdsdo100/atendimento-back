@@ -1,21 +1,18 @@
+
+console.log(`process.env.DATABASE_URL = ${process.env.DATABASE_URL}`)
 module.exports = {
    type: "postgres",
    url: process.env.DATABASE_URL,
-   host: "localhost",
-   port: 5432,
-   username: "postgres",
-   password: "root",
-   database: "atendimentos",
-   synchronize: true,
+   synchronize: false,
    logging: false,
    entities: [
-      "src/entity/**/*.ts"
+      "dist/entity/**/*.js"
    ],
    migrations: [
-      "src/database/migration/**/*.ts"
+      "dist/database/migration/**/*.js"
    ],
    subscribers: [
-      "src/database/subscriber/**/*.ts"
+      "dist/database/subscriber/**/*.js"
    ],
    cli: {
       "entitiesDir": "src/entity",
