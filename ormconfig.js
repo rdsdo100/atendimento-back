@@ -1,10 +1,11 @@
 module.exports = {
    type: "postgres",
-   host: "localhost",
+   url: process.env.DATABASE_URL,
+  /* host: "localhost",
    port: 5432,
    username: "postgres",
    password: "root",
-   database: "atendimentos",
+   database: "atendimentos",*/
    synchronize: true,
    logging: false,
    entities: [

@@ -6,7 +6,7 @@ import Rotas from "./rotas/Rotas"
 import path from 'path'
 import dotenv from "dotenv"
 
-const port:number = 3333
+const port =  process.env.PORT || 3333
 const app =express()
 dotenv.config()
 
