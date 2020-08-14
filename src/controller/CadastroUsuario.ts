@@ -6,6 +6,7 @@ import {TipoUsuario} from "../entity/TipoUsuario";
 export default class CadastroUsuario {
 
 
+
    async index(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) === 1){
@@ -23,9 +24,17 @@ export default class CadastroUsuario {
 
     }
 
+
+
     async cadastroUsuario(request: Request , response: Response){
 
-        const usuarioRepository = getRepository(Usuarios)
+        if(Number(request.body.decoded.tipoUsuario) === 2){
+            return response.json({message: "Acesso Negado!"})
+        }
+
+        console.log(request.body)
+
+        //const usuarioRepository = getRepository(Usuarios)
 
         const tipoUsuario = new TipoUsuario()
         const usuarios = new Usuarios()
@@ -35,11 +44,12 @@ export default class CadastroUsuario {
         usuarios.matriculaUsuario = String(request.body.matrcula)
         tipoUsuario.id = Number(request.body.tipoUsuaruio)
         usuarios.tipoUsuarioIdFk = tipoUsuario
-        const volta = await usuarioRepository.save(usuarios)
-        return response.json(volta)
+        //const volta = await usuarioRepository.save(usuarios)
+        return response.json(usuarios)
 
 
     }
+
 
 
 

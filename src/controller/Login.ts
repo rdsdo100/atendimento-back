@@ -35,7 +35,7 @@ export default class Login{
 
 const authorization = jwt.assinar(Number(getUsuario?.id) ,
     String(getUsuario?.nomeUsuario) ,
-    Number(getUsuario?.tipoUsuarioIdFk))
+    Number(getUsuario?.tipoUsuarioIdFk.id))
 
         return response.json({
             id: getUsuario?.id,

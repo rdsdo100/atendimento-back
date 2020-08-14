@@ -14,7 +14,7 @@ route.get('/' , (req , res)=>{
     res.send({ok : 'Funcionando' , Name: 'Rubens'})
 })
 
-route.post('/usuarios' , cadastroUsuarios.cadastroUsuario )
+route.post('/usuarios' , jwt.decodificar, cadastroUsuarios.cadastroUsuario )
 route.get('/usuarios' ,jwt.decodificar, cadastroUsuarios.index )
 
 route.get('/login' , login.login )
