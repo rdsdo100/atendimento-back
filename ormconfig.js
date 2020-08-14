@@ -1,21 +1,21 @@
 module.exports = {
    type: "postgres",
    url: process.env.DATABASE_URL,
-  /* host: "localhost",
+   host: "localhost",
    port: 5432,
    username: "postgres",
    password: "root",
-   database: "atendimentos",*/
+   database: "atendimentos",
    synchronize: true,
    logging: false,
    entities: [
-      "src/entity/**/*.js"
+      "src/entity/**/*.ts"
    ],
    migrations: [
-      "src/database/migration/**/*.js"
+      "src/database/migration/**/*.ts"
    ],
    subscribers: [
-      "src/database/subscriber/**/*js"
+      "src/database/subscriber/**/*.ts"
    ],
    cli: {
       "entitiesDir": "src/entity",
