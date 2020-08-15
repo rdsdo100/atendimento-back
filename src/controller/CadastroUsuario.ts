@@ -9,7 +9,7 @@ export default class CadastroUsuario {
 
    async index(request: Request , response: Response){
 
-        if(Number(request.body.decoded.tipoUsuario) === 1){
+        if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})
         }
         const usuariosRepository = getRepository(Usuarios)
@@ -28,7 +28,9 @@ export default class CadastroUsuario {
 
     async cadastroUsuario(request: Request , response: Response){
 
-        if(Number(request.body.decoded.tipoUsuario) === 2){
+
+
+       if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})
         }
 

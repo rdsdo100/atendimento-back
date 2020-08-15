@@ -1,22 +1,22 @@
 
 console.log(`process.env.DATABASE_URL = ${process.env.DATABASE_URL}`)
 module.exports = {
-   type: "postgres",
+   type: process.env.TYPEORM_SCHEMA,
    url: process.env.DATABASE_URL,
-   synchronize: false,
-   logging: false,
+   synchronize: process.env.TYPEORM_SYNCHRONIZE,
+   logging: process.env.TYPEORM_LOGGING,
    entities: [
-      "dist/entity/**/*.js"
+      process.env.TYPEORM_ENTITIES
    ],
    migrations: [
-      "dist/database/migration/**/*.js"
-   ],
+      process.env.TYPEORM_MIGRATIONS
+         ],
    subscribers: [
-      "dist/database/subscriber/**/*.js"
+      process.env.TYPEORM_SUBSCRIBERS
    ],
    cli: {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/database/migration",
-      "subscribersDir": "src/database/subscriber"
+      "entitiesDir": process.env.TYPEORM_ENTITIES_DIR  ,
+      "migrationsDir": process.env.TYPEORM_MIGRATIONS_DIR ,
+      "subscribersDir": process.env.TYPEORM_SUBSCRIBERS_DIR
    }
 }
