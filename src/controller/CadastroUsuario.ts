@@ -30,24 +30,24 @@ export default class CadastroUsuario {
 
 
 
+
        if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})
         }
 
-        console.log(request.body)
 
-        //const usuarioRepository = getRepository(Usuarios)
+        const usuarioRepository = getRepository(Usuarios)
 
         const tipoUsuario = new TipoUsuario()
         const usuarios = new Usuarios()
         usuarios.nomeUsuario = String(request.body.nomeUsuario)
         usuarios.senha = String(request.body.senha)
         usuarios.email= String(request.body.email)
-        usuarios.matriculaUsuario = String(request.body.matrcula)
+        //usuarios.matriculaUsuario = String(request.body.matrcula)
         tipoUsuario.id = Number(request.body.tipoUsuaruio)
         usuarios.tipoUsuarioIdFk = tipoUsuario
-        //const volta = await usuarioRepository.save(usuarios)
-        return response.json(usuarios)
+        const volta = await usuarioRepository.save(usuarios)
+        return response.json(volta)
 
 
     }

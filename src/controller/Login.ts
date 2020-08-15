@@ -6,11 +6,7 @@ export default class Login{
 
 
     async index(request: Request , response: Response){
-
-
-
-
-    }
+            }
 
     async login(request: Request , response: Response) {
 
@@ -33,13 +29,13 @@ export default class Login{
         }
 
 
-const authorization = jwt.assinar(Number(getUsuario?.id) ,
-    String(getUsuario?.nomeUsuario) ,
-    Number(getUsuario?.tipoUsuarioIdFk.id))
+const authorization = jwt.assinar(Number(getUsuario.id) ,
+    String(getUsuario.nomeUsuario) ,
+    Number(getUsuario.tipoUsuarioIdFk.id))
 
         return response.json({
-            id: getUsuario?.id,
-            nomeUsuario: getUsuario?.nomeUsuario,
+            id: getUsuario.id,
+            nomeUsuario: getUsuario.nomeUsuario,
             authorization})
     }
 
