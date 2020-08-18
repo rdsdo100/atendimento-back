@@ -1,4 +1,4 @@
-import {runInContext} from "vm";
+
 
 export default class VerificadorPrioridade{
 
