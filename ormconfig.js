@@ -2,8 +2,8 @@
 module.exports = {
    type: process.env.TYPEORM_SCHEMA,
    url: process.env.DATABASE_URL,
-   synchronize: process.env.TYPEORM_SYNCHRONIZE,
-   logging: process.env.TYPEORM_LOGGING,
+   synchronize: true,
+   logging: false,
    entities: [
       process.env.TYPEORM_ENTITIES
    ],
@@ -14,8 +14,8 @@ module.exports = {
       process.env.TYPEORM_SUBSCRIBERS
    ],
    cli: {
-      "entitiesDir": process.env.TYPEORM_ENTITIES_DIR  ,
-      "migrationsDir": process.env.TYPEORM_MIGRATIONS_DIR ,
-      "subscribersDir": process.env.TYPEORM_SUBSCRIBERS_DIR
+      entitiesDir: process.env.TYPEORM_ENTITIES_DIR  ,
+      migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR ,
+      subscribersDir: process.env.TYPEORM_SUBSCRIBERS_DIR
    }
 }

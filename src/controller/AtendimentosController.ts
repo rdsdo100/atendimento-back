@@ -3,6 +3,7 @@ import VerificadorPrioridade from "./util/VerificadorPrioridade";
 import {Usuarios} from "../entity/Usuarios";
 import {Atendimentos} from "../entity/Atendimentos";
 import {Empresas} from "../entity/Empresas";
+import {getRepository} from "typeorm/index";
 
 export  default  class AtendimentosController {
 
@@ -23,6 +24,13 @@ const verificarPrioridade = new VerificadorPrioridade()
             return response.json({message: "Acesso Negado!"})
         }
 
+        const atendimentoRepository = getRepository(Atendimentos)
+
+        const retorno = atendimentoRepository.find()
+
+
+        return  response.json(retorno)
+
 
 
 
@@ -32,10 +40,12 @@ const verificarPrioridade = new VerificadorPrioridade()
 
     }
 
-    cadastrarAtendimentos(request: Request , response: Response){
+   async cadastrarAtendimentos(request: Request , response: Response){
         const empresa = new Empresas()
         const usuario = new Usuarios()
         const atendimentos = new Atendimentos()
+
+        const atendimentoRepository = getRepository(Atendimentos)
 
         empresa.id = Number(request.body.empresa)
 
@@ -47,7 +57,11 @@ const verificarPrioridade = new VerificadorPrioridade()
         atendimentos.usuariosIdFk = usuario
         atendimentos.empresasIdFk = empresa
 
-        return response.json({atendimentos})
+
+        const retornoAtendimenos = await atendimentoRepository.save(atendimentos)
+
+
+        return response.json(retornoAtendimenos)
 
     }
 
