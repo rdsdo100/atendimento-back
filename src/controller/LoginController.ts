@@ -2,7 +2,7 @@ import {getRepository} from "typeorm/index";
 import {Usuarios} from "../entity/Usuarios";
 import {json, Request, Response} from "express";
 import Jwt from "../config/Jwt";
-export default class Login{
+export default class LoginController{
 
 
     async index(request: Request , response: Response){

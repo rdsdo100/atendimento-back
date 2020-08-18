@@ -11,6 +11,9 @@ export class Atendimentos {
     @Column({name: "descricao_atendimento"})
     descricaoAtendimento:string
 
+    @Column({name: "pendente" , default: true , nullable:false})
+    pendente:boolean
+
     @Column({name:"data_cadastro"})
     dataCadastro: Date
 
