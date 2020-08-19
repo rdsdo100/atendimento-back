@@ -4,11 +4,13 @@ import Jwt from "../config/Jwt";
 import UsuariosController from "../controller/UsuariosController";
 import LoginController from "../controller/LoginController";
 import AtendimentosController from "../controller/AtendimentosController";
+import EmpresaController from "../controller/EmpresaController";
 const route = express.Router()
 
 const usuariosController = new UsuariosController()
 const atendimentosController = new AtendimentosController()
 const loginController = new LoginController()
+const empresaController = new EmpresaController()
 
 const jwt = new Jwt()
 
@@ -23,6 +25,8 @@ route.get('/atendimentos-index' , jwt.decodificar , atendimentosController.index
 route.get('/atendimentos' , jwt.decodificar , atendimentosController.indexIdUsuarioDataHoje)
 route.post('/atendimentos' , jwt.decodificar , atendimentosController.cadastrarAtendimentos)
 
+
+route.get ('/list-emprea' , jwt.decodificar , empresaController.index)
 
 route.get('/login' , loginController.login )
 
