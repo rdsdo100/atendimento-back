@@ -14,7 +14,7 @@ export class Empresas {
     @Column({name:"razao_empresa"})
     razaoEmpresa:string
 
-    @Column({name:"fantasia-empresa"})
+    @Column({name:"fantasia_empresa"})
     fantasiaEmpresa:string
 
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.empresasIdFk)

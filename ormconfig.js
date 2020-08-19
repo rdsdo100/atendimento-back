@@ -1,21 +1,21 @@
 
 module.exports = {
-   type: "postgres" ,
-   url: "postgres://postgres:root@localhost:5432/atendimentos",
-   synchronize: true,
-   logging: false,
+   type: process.env.TYPEORM_SCHEMA ,
+   url: process.env.DATABASE_URL,
+   synchronize: process.env.TYPEORM_SYNCHRONIZE,
+   logging: process.env.TYPEORM_LOGGING,
    entities: [
-      "src/entity/**/*.ts"
+      process.env.TYPEORM_ENTITIES
    ],
    migrations: [
-     "src/database/migration/**/*.ts"
+      process.env.TYPEORM_MIGRATIONS
          ],
    subscribers: [
       process.env.TYPEORM_SUBSCRIBERS
    ],
    cli: {
-      entitiesDir: "src/entity" ,
-      migrationsDir: "src/database/migration" ,
+      entitiesDir: process.env.TYPEORM_ENTITIES_DIR,
+      migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       subscribersDir: process.env.TYPEORM_SUBSCRIBERS_DIR
    }
 }
