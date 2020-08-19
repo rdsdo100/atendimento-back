@@ -1,12 +1,10 @@
 import {getRepository} from "typeorm/index";
 import {Usuarios} from "../entity/Usuarios";
-import {json, Request, Response} from "express";
+import {Request, Response} from "express";
 import Jwt from "../config/Jwt";
 export default class LoginController{
 
-
-    async index(request: Request , response: Response){
-            }
+    async index(request: Request , response: Response){}
 
     async login(request: Request , response: Response) {
 
@@ -28,10 +26,9 @@ export default class LoginController{
             return response.json({message: "Usuario  ou senha incorreto!"})
         }
 
-
-const authorization = jwt.assinar(Number(getUsuario.id) ,
-    String(getUsuario.nomeUsuario) ,
-    Number(getUsuario.tipoUsuarioIdFk.id))
+        const authorization = jwt.assinar(Number(getUsuario.id) ,
+            String(getUsuario.nomeUsuario) ,
+            Number(getUsuario.tipoUsuarioIdFk.id))
 
         return response.json({
             id: getUsuario.id,

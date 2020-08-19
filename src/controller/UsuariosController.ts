@@ -5,8 +5,6 @@ import {TipoUsuario} from "../entity/TipoUsuario";
 
 export default class UsuariosController {
 
-
-
    async index(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) !== 1){
@@ -24,12 +22,7 @@ export default class UsuariosController {
 
     }
 
-
-
     async cadastroUsuario(request: Request , response: Response){
-
-
-
 
        if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})
@@ -43,17 +36,11 @@ export default class UsuariosController {
         usuarios.nomeUsuario = String(request.body.nomeUsuario)
         usuarios.senha = String(request.body.senha)
         usuarios.email= String(request.body.email)
-        //usuarios.matriculaUsuario = String(request.body.matrcula)
+        usuarios.matriculaUsuario = String(request.body.matrcula)
         tipoUsuario.id = Number(request.body.tipoUsuaruio)
         usuarios.tipoUsuarioIdFk = tipoUsuario
         const volta = await usuarioRepository.save(usuarios)
         return response.json(volta)
 
-
     }
-
-
-
-
-
 }

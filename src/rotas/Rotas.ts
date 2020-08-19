@@ -19,7 +19,8 @@ route.get('/' , (req , res)=>{
 route.post('/usuarios' , jwt.decodificar, usuariosController.cadastroUsuario )
 route.get('/usuarios' ,jwt.decodificar, usuariosController.index )
 
-route.get('/atendimentos' , jwt.decodificar , atendimentosController.indexIdUsuario)
+route.get('/atendimentos-index' , jwt.decodificar , atendimentosController.index)
+route.get('/atendimentos' , jwt.decodificar , atendimentosController.indexIdUsuarioDataHoje)
 route.post('/atendimentos' , jwt.decodificar , atendimentosController.cadastrarAtendimentos)
 
 

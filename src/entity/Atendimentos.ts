@@ -14,7 +14,7 @@ export class Atendimentos {
     @Column({name: "pendente" , default: true , nullable:false})
     pendente:boolean
 
-    @Column({name:"data_cadastro"})
+    @Column({name:"data_cadastro" , type: "date"})
     dataCadastro: Date
 
     @ManyToOne(() => Usuarios, (usuarios) => usuarios.atendimentos , {eager: true})
