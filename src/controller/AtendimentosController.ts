@@ -19,7 +19,6 @@ export  default  class AtendimentosController {
         const dataInicio = request.headers.datainicio
         const dataFim = request.headers.datafim
 
-        console.log(dataFim , dataInicio)
         const atendimentoRepository = getRepository(Atendimentos)
 
         const retorno = await atendimentoRepository.find(
