@@ -30,7 +30,7 @@ route.get('/usuarios' ,jwt.decodificar, usuariosController.index )
 
 route.get('/atendimentos-index' , jwt.decodificar , atendimentosController.index)
 route.get('/atendimentos' , jwt.decodificar , atendimentosController.indexIdUsuarioDataHoje)
-route.delete('/atendimentos' , jwt.decodificar , atendimentosController.deletarAtendimentos)
+route.delete('/atendimentos/:id' , jwt.decodificar , atendimentosController.deletarAtendimentos)
 
 route.post('/atendimentos'  , jwt.decodificar , atendimentosController.cadastrarAtendimentos)
 

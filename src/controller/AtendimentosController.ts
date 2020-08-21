@@ -86,14 +86,19 @@ export  default  class AtendimentosController {
     }
 
     async deletarAtendimentos(request: Request , response: Response){
-        const atendimentoRepository = getRepository(Atendimentos)
+
+       const parms = request.params.id
+
+
+       const atendimentoRepository = getRepository(Atendimentos)
         const atendimento = new Atendimentos()
 
-        atendimento.id = 577
+        atendimento.id = Number(parms)
 
-        const retorno = await atendimentoRepository.delete(atendimento.id)
+  await atendimentoRepository.delete(atendimento.id)
+        return response.json({deletado: atendimento.id})
 
-return response.json(retorno)
+
 
     }
 
