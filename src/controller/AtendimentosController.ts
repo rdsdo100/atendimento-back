@@ -85,5 +85,18 @@ export  default  class AtendimentosController {
 
     }
 
+    async deletarAtendimentos(request: Request , response: Response){
+        const atendimentoRepository = getRepository(Atendimentos)
+        const atendimento = new Atendimentos()
+
+        atendimento.id = 577
+
+        const retorno = await atendimentoRepository.delete(atendimento.id)
+
+return response.json(retorno)
+
+    }
+
+
 
 }
