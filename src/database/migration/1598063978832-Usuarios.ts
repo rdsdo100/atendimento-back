@@ -13,7 +13,7 @@ export class Usuarios1598063978832 implements MigrationInterface {
                           senha varchar not null,
                           bloqueio_usuario  boolean default false not null,
                           tipo_usuarios_id_fk integer ,
-                          constraint usuarios_tipo_usuarios foreign key (tipo_usuarios_id_fk) references usuarios(id)
+                          constraint usuarios_tipo_usuarios foreign key (tipo_usuarios_id_fk) references tipo_usuarios(id)
 
       );
       

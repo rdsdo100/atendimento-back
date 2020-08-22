@@ -28,7 +28,7 @@ export class Usuarios {
     atendimentos: Atendimentos[];
 
     @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario, {eager: true})
-    @JoinColumn([{name: " tipo_usuarios_id_fk", referencedColumnName: "id"}])
+    @JoinColumn([{name: "tipo_usuarios_id_fk", referencedColumnName: "id"}])
     tipoUsuarioIdFk: TipoUsuario
 
 }
