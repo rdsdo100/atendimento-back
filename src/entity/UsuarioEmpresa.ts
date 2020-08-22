@@ -2,7 +2,7 @@ import {Entity} from "typeorm";
 import {Column, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm/index";
 import {Empresas} from "./Empresas";
 
-@Entity({name: "usuario-empresa"})
+@Entity({name: "usuario_empresa"})
 export class UsuarioEmpresa {
 
 

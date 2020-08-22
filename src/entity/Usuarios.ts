@@ -3,10 +3,7 @@ import {Atendimentos} from "./Atendimentos";
 import {JoinColumn, ManyToOne} from "typeorm/index";
 import {TipoUsuario} from "./TipoUsuario";
 
-
-
-
-@Entity()
+@Entity({name: "usuarios"})
 export class Usuarios {
 
     @PrimaryGeneratedColumn({type: "integer", name: "id"})
@@ -31,7 +28,7 @@ export class Usuarios {
     atendimentos: Atendimentos[];
 
     @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario, {eager: true})
-    @JoinColumn([{name: "tipo_usuarios_id_fk", referencedColumnName: "id"}])
+    @JoinColumn([{name: " tipo_usuarios_id_fk", referencedColumnName: "id"}])
     tipoUsuarioIdFk: TipoUsuario
 
 }
