@@ -1,7 +1,4 @@
-
-
 export default class VerificadorPrioridade{
-
 
     isUserAdm(tipoUsuario: number){
 

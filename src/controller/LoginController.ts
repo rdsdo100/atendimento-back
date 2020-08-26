@@ -10,7 +10,6 @@ export default class LoginController{
 
         try {
 
-
             const usuariosRepository = getRepository(Usuarios)
             const usuario = new Usuarios()
             const jwt = new Jwt()
@@ -25,8 +24,6 @@ export default class LoginController{
                 }
             )
 
-
-
             if ((!getUsuario?.nomeUsuario) || (getUsuario?.senha != usuario.senha)) {
                 return response.json({message: "Usuario  ou senha incorreto!"})
             }
@@ -40,7 +37,6 @@ export default class LoginController{
                 nomeUsuario: getUsuario.nomeUsuario,
                 authorization
             })
-
 
         } catch (error) {
 

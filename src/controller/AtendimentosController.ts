@@ -99,9 +99,8 @@ export  default  class AtendimentosController {
         return response.json({deletado: atendimento.id})
 
 
-
     }
 
-
+    async alterAtendimentos (request: Request , response: Response){}
 
 }

@@ -17,9 +17,7 @@ export default class UsuariosController {
            delete getusuarios?.senha
        })
 
-
         return  response.json(getusuarios)
-
     }
 
     async cadastroUsuario(request: Request , response: Response){
@@ -27,7 +25,6 @@ export default class UsuariosController {
        if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})
         }
-
 
         const usuarioRepository = getRepository(Usuarios)
 
@@ -43,4 +40,8 @@ export default class UsuariosController {
         return response.json(volta)
 
     }
+
+    async deleteUsuario(request: Request , response: Response){}
+
+    async alterUsuario(request: Request , response: Response){}
 }
