@@ -94,6 +94,8 @@ npx typeorm entity:create -n "nome Tabelas"                                    =
 npx ts-node ./node_modules/typeorm/cli.js migration:run                        == executa as migrations
 npx typeorm migration:run                                                      == executa as migrations
 npx ts-node ./node_modules/typeorm/cli.js migration:generate -n CreateTable    == cria as migrations aparetrir da entity
+npx ts-node ./node_modules/typeorm/cli.js migration:revert                     == vlta as migrations uma de cadasvez
+
 ===================================================================================================================================================
 
     https://github.com/Kononnable/typeorm-model-generator

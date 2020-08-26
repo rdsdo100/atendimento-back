@@ -1,6 +1,7 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Usuarios} from "./Usuarios";
 import {Empresas} from "./Empresas";
+import {RequisicaoDesenvolvimento} from "./RequisicaoDesenvolvimento";
 
 @Entity()
 export class Atendimentos {
@@ -25,7 +26,8 @@ export class Atendimentos {
     @JoinColumn([{ name: "empresas_id_fk", referencedColumnName: "id" }])
     empresasIdFk: Empresas
 
-
+    @OneToMany(() => RequisicaoDesenvolvimento, (requisicaoDesenvolvimento) => requisicaoDesenvolvimento.atenimentoIdFk)
+    requisicaoDesenvolvimento: RequisicaoDesenvolvimento[];
 
 
 }
