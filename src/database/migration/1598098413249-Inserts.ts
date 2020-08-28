@@ -11,7 +11,7 @@ export class Inserts1598098413249 implements MigrationInterface {
                                                          (3 , 'Convidado');
                                                          
         insert into usuarios (id, nome_usuario, matricula_usuario, email, senha, bloqueio_usuario, tipo_usuarios_id_fk) values 
-    (1 ,   'RUBENS' , '1' , 'r8sspo2012@hotmail.com' , '123456' , false , 1) ;
+    (1 ,   'root' , '1' , 'root@hotmail.com' , 'toor' , false , 1) ;
         
         `)
     }
