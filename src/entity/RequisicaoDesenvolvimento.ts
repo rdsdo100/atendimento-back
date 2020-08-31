@@ -1,7 +1,7 @@
 import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {Atendimentos} from "./Atendimentos";
 
-@Entity()
+@Entity({name: "requisicao_desenvolvimento"})
 export class RequisicaoDesenvolvimento {
 
     @PrimaryGeneratedColumn({ type: "integer", name: "id" })

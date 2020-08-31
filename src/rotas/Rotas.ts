@@ -37,7 +37,8 @@ route.post('/atendimentos'  , jwt.decodificar , atendimentosController.cadastrar
 route.get('/desenvolvimento' , jwt.decodificar , reqDesenvolvimento.index )
 route.post('/desenvolvimento' , jwt.decodificar , reqDesenvolvimento.cadastroRequisicao )
 
-route.get ('/list-emprea' , jwt.decodificar , empresaController.index)
+route.get ('/list-empresa' , jwt.decodificar , empresaController.index)
+route.post('/cad-empresa' , jwt.decodificar , empresaController.cadastrEmoresa)
 
 route.get('/login' , loginController.login )
 

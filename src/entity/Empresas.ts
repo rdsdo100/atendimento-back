@@ -1,6 +1,9 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Atendimentos} from "./Atendimentos";
 import {UsuarioEmpresa} from "./UsuarioEmpresa";
+import {TipoUsuario} from "./TipoUsuario";
+import {GrupoEmpresa} from "./GrupoEmpresa";
+
 
 @Entity()
 export class Empresas {
@@ -22,5 +25,11 @@ export class Empresas {
 
     @OneToMany(() => UsuarioEmpresa, (usuarioEmpresa) => usuarioEmpresa.empresaIdFk)
     usuarioEmpresa: UsuarioEmpresa[];
+
+
+
+    @ManyToOne(() => GrupoEmpresa, (grupoEmpresa) => grupoEmpresa.empresa, {eager: true})
+    @JoinColumn([{name: "grupo_empressa_id_fk", referencedColumnName: "id"}])
+    empresaIdFk: TipoUsuario
 
 }

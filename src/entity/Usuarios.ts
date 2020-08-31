@@ -33,15 +33,3 @@ export class Usuarios {
 
 }
 
-
-/*
- {
-
-	     "nomeUsuario":"Dirgo",
-        "senha": "123456",
-        "email" :"rdsda2011@gmail.com",
-       	"matrcula" :"2",
-        "tipoUsuaruio" : 1
-
-}
-* */

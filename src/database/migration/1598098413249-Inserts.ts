@@ -9,11 +9,18 @@ export class Inserts1598098413249 implements MigrationInterface {
                                                          (1 , 'Adminstrador'),
                                                          (2 , 'Suporte'),
                                                          (3 , 'Convidado');
-                                                         
+        `);
+
+        await queryRunner.query(`
+                                                                 
         insert into usuarios (id, nome_usuario, matricula_usuario, email, senha, bloqueio_usuario, tipo_usuarios_id_fk) values 
     (1 ,   'root' , '1' , 'root@hotmail.com' , 'toor' , false , 1) ;
+      `);
+        await queryRunner.query(`
+        insert into grupo_empressas (id, nome_grupo) VALUES 
+(1 , 'geral');
         
-        `)
+        `);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
