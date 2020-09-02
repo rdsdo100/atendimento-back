@@ -35,7 +35,7 @@ export  default  class AtendimentosController {
 
         const verificarPrioridade = new VerificadorPrioridade()
 
-        if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
+        if(!verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
         {
             return response.json({message: "Acesso Negado!"})
         }
