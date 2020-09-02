@@ -40,6 +40,5 @@ export default  class EmpresaController{
         }
     }
 
-
     async alterEmpresa(request: Request , response: Response){}
 }

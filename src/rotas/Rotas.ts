@@ -22,6 +22,7 @@ route.get('/' , (req , res)=>{
 
 route.post('/usuarios' , jwt.decodificar, usuariosController.cadastroUsuario )
 route.get('/usuarios' ,jwt.decodificar, usuariosController.index )
+route.delete('/usuarios/:id' ,jwt.decodificar, usuariosController.deleteUsuario )
 
 route.get('/atendimentos-index' , jwt.decodificar , atendimentosController.index)
 route.get('/atendimentos' , jwt.decodificar , atendimentosController.indexIdUsuarioDataHoje)
