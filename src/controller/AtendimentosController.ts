@@ -9,7 +9,8 @@ export  default  class AtendimentosController {
 
     async index (request: Request , response: Response){
 
-        const verificarPrioridade = new VerificadorPrioridade()
+ const verificarPrioridade = new VerificadorPrioridade()
+
 
         if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
         {
@@ -33,12 +34,7 @@ export  default  class AtendimentosController {
 
     async  indexIdUsuarioDataHoje (request: Request , response: Response){
 
-        const verificarPrioridade = new VerificadorPrioridade()
 
-        if(!verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
-        {
-            return response.json({message: "Acesso Negado!"})
-        }
 
         const atendimentoRepository = getRepository(Atendimentos)
 

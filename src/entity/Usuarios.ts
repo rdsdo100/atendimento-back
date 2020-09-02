@@ -27,7 +27,7 @@ export class Usuarios {
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFk)
     atendimentos: Atendimentos[];
 
-    @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario, {eager: true})
+    @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario )
     @JoinColumn([{name: "tipo_usuarios_id_fk", referencedColumnName: "id"}])
     tipoUsuarioIdFk: TipoUsuario
 

@@ -18,11 +18,11 @@ export class Atendimentos {
     @Column({name:"data_cadastro" , type: "date"})
     dataCadastro: Date
 
-    @ManyToOne(() => Usuarios, (usuarios) => usuarios.atendimentos , {eager: true})
+    @ManyToOne(() => Usuarios, (usuarios) => usuarios.atendimentos )
     @JoinColumn([{ name: "usuarios_id_fk", referencedColumnName: "id" }])
     usuariosIdFk: Usuarios;
 
-    @ManyToOne(() => Empresas, (empresas) => empresas.atendimentos,{ eager: true})
+    @ManyToOne(() => Empresas, (empresas) => empresas.atendimentos)
     @JoinColumn([{ name: "empresas_id_fk", referencedColumnName: "id" }])
     empresasIdFk: Empresas
 

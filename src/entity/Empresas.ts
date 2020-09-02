@@ -28,7 +28,7 @@ export class Empresas {
 
 
 
-    @ManyToOne(() => GrupoEmpresa, (grupoEmpresa) => grupoEmpresa.empresa, {eager: true})
+    @ManyToOne(() => GrupoEmpresa, (grupoEmpresa) => grupoEmpresa.empresa, )
     @JoinColumn([{name: "grupo_empressa_id_fk", referencedColumnName: "id"}])
     empresaIdFk: TipoUsuario
 
