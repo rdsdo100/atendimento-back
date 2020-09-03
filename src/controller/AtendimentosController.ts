@@ -37,22 +37,29 @@ export  default  class AtendimentosController {
 
 
         const atendimentoRepository = getRepository(Atendimentos)
+        const atendimentos = new Atendimentos()
 
-        const retorno = await atendimentoRepository.find(
+     /*   const retorno = await atendimentoRepository.find(
             {
+
                 where:{dataCadastro: new Date(),
                     usuariosIdFk : Number(request.body.decoded.tipoUsuario)}
             }
         )
+*/
+
+        const retorno = await atendimentoRepository.find({
+            relations:["empresas"]
+        })
 
 
-        retorno.map(retorno =>{
+       /* retorno.map(retorno =>{
             delete retorno.usuariosIdFk.senha
             delete retorno.usuariosIdFk.bloqueioUsuario
             delete retorno.usuariosIdFk.matriculaUsuario
             delete retorno.usuariosIdFk.email
             delete retorno.usuariosIdFk.tipoUsuarioIdFk
-        })
+        })*/
 
         return  response.json(retorno)
 

@@ -22,7 +22,7 @@ export class Atendimentos {
     @JoinColumn([{ name: "usuarios_id_fk", referencedColumnName: "id" }])
     usuariosIdFk: Usuarios;
 
-    @ManyToOne(() => Empresas, (empresas) => empresas.atendimentos)
+    @ManyToOne(() => Empresas, (empresas) => empresas.atendimentos , {})
     @JoinColumn([{ name: "empresas_id_fk", referencedColumnName: "id" }])
     empresasIdFk: Empresas
 
