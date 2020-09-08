@@ -9,8 +9,7 @@ export  default  class AtendimentosController {
 
     async index (request: Request , response: Response){
 
- const verificarPrioridade = new VerificadorPrioridade()
-
+        const verificarPrioridade = new VerificadorPrioridade()
 
         if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
         {
@@ -34,34 +33,26 @@ export  default  class AtendimentosController {
 
     async  indexIdUsuarioDataHoje (request: Request , response: Response){
 
+        try {
 
+            let retorno = await  Atendimentos.find({
+                where: {dataCadastro : new Date()}
+            } )
 
-        const atendimentoRepository = getRepository(Atendimentos)
-        const atendimentos = new Atendimentos()
+            const ret = retorno.map(item => {
 
-     /*   const retorno = await atendimentoRepository.find(
-            {
+                delete item.usuariosIdFk.senha
+                delete item.usuariosIdFk.tipoUsuarioIdFk
+                delete item.usuariosIdFk.bloqueioUsuario
+                delete item.empresasIdFk.fantasiaEmpresa
+                   return item
+            })
 
-                where:{dataCadastro: new Date(),
-                    usuariosIdFk : Number(request.body.decoded.tipoUsuario)}
-            }
-        )
-*/
+            return response.json(ret)
 
-        const retorno = await atendimentoRepository.find({
-            relations:["empresas"]
-        })
-
-
-       /* retorno.map(retorno =>{
-            delete retorno.usuariosIdFk.senha
-            delete retorno.usuariosIdFk.bloqueioUsuario
-            delete retorno.usuariosIdFk.matriculaUsuario
-            delete retorno.usuariosIdFk.email
-            delete retorno.usuariosIdFk.tipoUsuarioIdFk
-        })*/
-
-        return  response.json(retorno)
+        } catch (err) {
+            return response.json({err , message: err.message})
+        }
 
     }
 
@@ -90,7 +81,7 @@ export  default  class AtendimentosController {
 
     async deletarAtendimentos(request: Request , response: Response){
 
-       const params = request.params.id
+        const params = request.params.id
 
         const atendimentoRepository = getRepository(Atendimentos)
         const atendimento = new Atendimentos()

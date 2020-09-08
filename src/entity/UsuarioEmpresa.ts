@@ -1,9 +1,9 @@
-import {Entity} from "typeorm";
+import {BaseEntity, Entity} from "typeorm";
 import {Column, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm/index";
 import {Empresas} from "./Empresas";
 
 @Entity({name: "usuario_empresa"})
-export class UsuarioEmpresa {
+export class UsuarioEmpresa extends BaseEntity {
 
 
     @PrimaryGeneratedColumn({ type: "integer", name: "id" })

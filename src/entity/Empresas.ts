@@ -1,4 +1,4 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Atendimentos} from "./Atendimentos";
 import {UsuarioEmpresa} from "./UsuarioEmpresa";
 import {TipoUsuario} from "./TipoUsuario";
@@ -6,7 +6,7 @@ import {GrupoEmpresa} from "./GrupoEmpresa";
 
 
 @Entity()
-export class Empresas {
+export class Empresas extends BaseEntity {
 
     @PrimaryGeneratedColumn({ type: "integer", name: "id" })
     id:number
