@@ -1,3 +1,4 @@
+import"./util/module-alias"
 import "reflect-metadata";
 import './config/DataBaseConfig'
 import express from 'express'
