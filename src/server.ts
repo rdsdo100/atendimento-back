@@ -1,10 +1,12 @@
-import './config/module-alias';
+//import './config/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import LoginController from "@src/controller/LoginController";
-import ExemplosJson from "@src/controller/ExemplosJson";
-import Inicio from "@src/controller/Inicio";
+import LoginController from "./controller/LoginController";
+import ExemplosJson from "./controller/ExemplosJson";
+import Inicio from "./controller/Inicio";
+
+
 
 
 export class SetupServer extends Server {
