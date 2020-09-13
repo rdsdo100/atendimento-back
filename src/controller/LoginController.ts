@@ -2,7 +2,6 @@ import {getRepository} from "typeorm/index";
 import {Usuarios} from "../entity/Usuarios";
 import {Request, Response} from "express";
 import Jwt from "../config/Jwt";
-import {join} from "path";
 import {TipoUsuario} from "../entity/TipoUsuario";
 import { Controller , Get } from '@overnightjs/core';
 

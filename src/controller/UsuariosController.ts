@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
-import {Usuarios} from "@src/entity/Usuarios";
+import {Usuarios} from "../entity/Usuarios";
 import {getRepository} from "typeorm/index";
-import {TipoUsuario} from "@src/entity/TipoUsuario";
+import {TipoUsuario} from "../entity/TipoUsuario";
 
 export default class UsuariosController {
 
