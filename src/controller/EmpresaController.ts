@@ -17,7 +17,7 @@ export default  class EmpresaController{
     async cadastrEmoresa(request: Request , response: Response): Promise<void> {
 
         const verificadorPrioridade = new VerificadorPrioridade()
-        if( verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {
+        if(   !verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {
             response.json({message: "Acesso Negado!"})
         }
 

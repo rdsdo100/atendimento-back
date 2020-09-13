@@ -13,9 +13,12 @@ import {decodificar} from '@src/config/Jwt'
 @ClassMiddleware([decodificar])
 export  default  class AtendimentosController {
 
+<<<<<<< HEAD
     @Get('' )
     async index (request: Request , response: Response) : Promise<void>{
 
+=======
+>>>>>>> parent of d299de3... ok
         const verificarPrioridade = new VerificadorPrioridade()
 
         if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
@@ -40,11 +43,20 @@ export  default  class AtendimentosController {
 
     async  indexIdUsuarioDataHoje (request: Request , response: Response): Promise<void> {
 
+<<<<<<< HEAD
         try {
 
             const retorno = await  Atendimentos.find({
                 where: {dataCadastro : new Date()}
             } )
+=======
+        const verificarPrioridade = new VerificadorPrioridade()
+
+        if(!verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
+        {
+            return response.json({message: "Acesso Negado!"})
+        }
+>>>>>>> parent of d299de3... ok
 
             const ret = retorno.map(item => {
 

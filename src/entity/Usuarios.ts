@@ -27,7 +27,11 @@ export class Usuarios extends BaseEntity {
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFk)
     atendimentos: Atendimentos[];
 
+<<<<<<< HEAD
     @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario , {eager: true} )
+=======
+    @ManyToOne(() => TipoUsuario, (tipoUsuarios) => tipoUsuarios.tipoUsuario, {eager: true})
+>>>>>>> parent of d299de3... ok
     @JoinColumn([{name: "tipo_usuarios_id_fk", referencedColumnName: "id"}])
     tipoUsuarioIdFk: TipoUsuario
 

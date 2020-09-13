@@ -22,7 +22,7 @@ export class RequisicaoDesenvolvimento extends BaseEntity {
     @Column({name:"data_encerramento" , type: "date" , nullable: true})
     dataEncerramento: Date
 
-    @ManyToOne(() => Atendimentos, (atendiemntos) => atendiemntos.requisicaoDesenvolvimento, { nullable: true})
+    @ManyToOne(() => Atendimentos, (atendiemntos) => atendiemntos.requisicaoDesenvolvimento, {eager: true , nullable: true})
     @JoinColumn([{name: "atenimento_id_fk", referencedColumnName: "id" }])
     atenimentoIdFk: Atendimentos
 
