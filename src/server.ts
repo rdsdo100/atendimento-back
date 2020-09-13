@@ -1,22 +1,51 @@
-import "reflect-metadata";
-import './config/DataBaseConfig'
-import express from 'express'
-import cors from 'cors'
-import Rotas from "./rotas/Rotas"
-import path from 'path'
-import dotenv from "dotenv"
+/*
+import './util/module-alias';
+import { Server } from '@overnightjs/core';
+import { Application } from 'express';
+import bodyParser from 'body-parser';
+import { ForecastController } from './controllers/forecast';
+import * as database from '@src/database';
+import { BeachesController } from './controllers/beaches';
 
-import {errors} from 'celebrate'
+export class SetupServer extends Server {
 
-const port =  process.env.PORT || 3333
-const app =express()
-dotenv.config()
+  constructor(private port = 3000) {
+    super();
+  }
 
-app.use(cors())
-app.use(express.json())
-app.use(Rotas)
-app.use('/uploads' , express.static(path.resolve(__dirname, '..' , 'uploads' )))
-app.use(errors())
+  public async init(): Promise<void> {
+    this.setupExpress();
+    this.setupControllers();
+    await this.databaseSetup();
+  }
 
+  private setupExpress(): void {
+    this.app.use(bodyParser.json());
+    this.setupControllers();
+  }
 
-app.listen(port , ()=>{ console.log(`Servidor aberto na porta: ${port}!!!`) });
+  private setupControllers(): void {
+    const forecastController = new ForecastController();
+    const beachesController = new BeachesController();
+    this.addControllers([forecastController, beachesController]);
+  }
+
+  public getApp(): Application {
+    return this.app;
+  }
+
+  private async databaseSetup(): Promise<void> {
+    await database.connect();
+  }
+
+  public async close(): Promise<void> {
+    await database.close();
+  }
+
+  public start(): void {
+    this.app.listen(this.port, () => {
+      console.info('Server listening on port: ' + this.port);
+    });
+  }
+}
+*/
