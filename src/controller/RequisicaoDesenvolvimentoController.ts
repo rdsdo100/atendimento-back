@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import {RequisicaoDesenvolvimento} from "../entity/RequisicaoDesenvolvimento";
-import {Atendimentos} from "../entity/Atendimentos";
+import {RequisicaoDesenvolvimento} from "@src/entity/RequisicaoDesenvolvimento";
+import {Atendimentos} from "@src/entity/Atendimentos";
 import {getRepository} from "typeorm";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
 
@@ -54,7 +54,7 @@ export  default class RequisicaoDesenvolvimentoController {
 
     }
 
-    async alterRequisicao(request: Request , response: Response){}
+/*    async alterRequisicao(request: Request , response: Response){}
 
-    async deleteRequisicao(request: Request , response: Response){}
+    async deleteRequisicao(request: Request , response: Response){}*/
 }

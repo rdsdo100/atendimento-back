@@ -1,12 +1,14 @@
 import {Request, Response} from "express";
+import {Controller, Get} from '@overnightjs/core'
 
+@Controller("exemplos")
 export default class ExemplosJson {
 
+@Get('cadastro')
+    async  index (request: Request , response: Response) : Promise<void> {
 
-    async  index (request: Request , response: Response) {
 
-
-        return response.json({
+         response.json({
 
             Posts: {
                 atemdimentos: {
@@ -50,11 +52,11 @@ export default class ExemplosJson {
         })
 
     }
+@Get('login-exemplos')
+    async  indexLoginExemplos (request: Request , response: Response) : Promise<void> {
 
-    async  indexLoginExemplos (request: Request , response: Response) {
 
-
-        return response.json({
+         response.json({
             Get: {
                 login: {
                     url: "/login",

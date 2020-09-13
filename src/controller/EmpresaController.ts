@@ -1,20 +1,20 @@
 import {Request, Response} from "express";
 import {getRepository} from "typeorm/index";
-import {Empresas} from "../entity/Empresas";
+import {Empresas} from "@src/entity/Empresas";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
 
 export default  class EmpresaController{
 
-    async  index (request: Request , response: Response) {
+    async  index (request: Request , response: Response): Promise<void> {
 
         const getEmpresa = getRepository(Empresas)
         const retorno = await getEmpresa.find()
 
-        return response.json(retorno)
+         response.json(retorno)
 
     }
 
-    async cadastrEmoresa(request: Request , response: Response){
+    async cadastrEmoresa(request: Request , response: Response): Promise<void> {
 
         const verificadorPrioridade = new VerificadorPrioridade()
         if( verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {
@@ -29,9 +29,9 @@ export default  class EmpresaController{
 
         try {
             const retorno = await empresaRepostory.save(empresa)
-            return response.json(retorno)
+             response.json(retorno)
         }catch (err){
-            return response.json(
+             response.json(
                 {
                     message: "Empreas Não cadastrada" ,
                     err
@@ -40,5 +40,8 @@ export default  class EmpresaController{
         }
     }
 
+/*
     async alterEmpresa(request: Request , response: Response){}
+    */
+
 }

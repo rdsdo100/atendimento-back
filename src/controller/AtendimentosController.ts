@@ -1,19 +1,26 @@
+import {ClassMiddleware, Controller, Get} from '@overnightjs/core';
 import {Request, Response} from "express";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
-import {Usuarios} from "../entity/Usuarios";
-import {Atendimentos} from "../entity/Atendimentos";
-import {Empresas} from "../entity/Empresas";
+import {Usuarios} from "@src/entity/Usuarios";
+import {Atendimentos} from "@src/entity/Atendimentos";
+import {Empresas} from "@src/entity/Empresas";
 import {Between, getRepository} from "typeorm/index";
+import {decodificar} from '@src/config/Jwt'
 
+
+
+@Controller('atendimentos')
+@ClassMiddleware([decodificar])
 export  default  class AtendimentosController {
 
-    async index (request: Request , response: Response){
+    @Get('' )
+    async index (request: Request , response: Response) : Promise<void>{
 
         const verificarPrioridade = new VerificadorPrioridade()
 
         if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
         {
-            return response.json({message: "Acesso Negado!"})
+             response.json({message: "Acesso Negado!"})
         }
 
         const dataInicio = request.headers.datainicio
@@ -27,15 +34,15 @@ export  default  class AtendimentosController {
             }
         )
 
-        return response.json(retorno)
+         response.json(retorno)
 
     }
 
-    async  indexIdUsuarioDataHoje (request: Request , response: Response){
+    async  indexIdUsuarioDataHoje (request: Request , response: Response): Promise<void> {
 
         try {
 
-            let retorno = await  Atendimentos.find({
+            const retorno = await  Atendimentos.find({
                 where: {dataCadastro : new Date()}
             } )
 
@@ -48,15 +55,15 @@ export  default  class AtendimentosController {
                    return item
             })
 
-            return response.json(ret)
+             response.json(ret)
 
         } catch (err) {
-            return response.json({err , message: err.message})
+             response.json({err , message: err.message})
         }
 
     }
 
-    async cadastrarAtendimentos(request: Request , response: Response){
+    async cadastrarAtendimentos(request: Request , response: Response) : Promise<void>{
         const empresa = new Empresas()
         const usuario = new Usuarios()
         const atendimentos = new Atendimentos()
@@ -75,11 +82,11 @@ export  default  class AtendimentosController {
 
         const retornoAtendimenos = await atendimentoRepository.save(atendimentos)
 
-        return response.json(retornoAtendimenos)
+         response.json(retornoAtendimenos)
 
     }
 
-    async deletarAtendimentos(request: Request , response: Response){
+    async deletarAtendimentos(request: Request , response: Response) : Promise<void>{
 
         const params = request.params.id
 
@@ -89,11 +96,11 @@ export  default  class AtendimentosController {
         atendimento.id = Number(params)
 
         await atendimentoRepository.delete(atendimento.id)
-        return response.json({deletado: atendimento.id})
+         response.json({deletado: atendimento.id})
 
 
     }
 
-    async alterAtendimentos (request: Request , response: Response){}
+
 
 }

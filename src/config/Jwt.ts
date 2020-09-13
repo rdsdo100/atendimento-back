@@ -1,8 +1,8 @@
 import {NextFunction, Request, Response} from "express";
 import jwt from 'jsonwebtoken'
-export default class Jwt{
 
-    assinar(id:number , nomeUsuario:string , tipoUsuario:number ){
+
+  export function assinar(id:number , nomeUsuario:string , tipoUsuario:number ){
 
         const token = jwt.sign(
             {id, nomeUsuario , tipoUsuario } ,
@@ -12,9 +12,9 @@ export default class Jwt{
 
     }
 
-    decodificar(request:Request , response: Response, next:NextFunction){
+export const  decodificar = (request:Request , response: Response, next:NextFunction) =>{
 
-        let authorization=  String(request.headers.authorization)
+        const authorization=  String(request.headers.authorization)
 
         jwt.verify(authorization ,
             String(process.env.JWT_TOKEN),
@@ -36,4 +36,3 @@ export default class Jwt{
         })
 
     }
-}
