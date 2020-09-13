@@ -1,11 +1,11 @@
-/*
-import './util/module-alias';
+import './config/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import { ForecastController } from './controllers/forecast';
-import * as database from '@src/database';
-import { BeachesController } from './controllers/beaches';
+import LoginController from "@src/controller/LoginController";
+import ExemplosJson from "@src/controller/ExemplosJson";
+import Inicio from "@src/controller/Inicio";
+
 
 export class SetupServer extends Server {
 
@@ -16,7 +16,7 @@ export class SetupServer extends Server {
   public async init(): Promise<void> {
     this.setupExpress();
     this.setupControllers();
-    await this.databaseSetup();
+
   }
 
   private setupExpress(): void {
@@ -25,22 +25,18 @@ export class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    const forecastController = new ForecastController();
-    const beachesController = new BeachesController();
-    this.addControllers([forecastController, beachesController]);
+
+    const login = new LoginController()
+    const exemplos = new ExemplosJson()
+    const inicio = new Inicio()
+
+    this.addControllers([login ,inicio , exemplos]);
   }
 
   public getApp(): Application {
     return this.app;
   }
 
-  private async databaseSetup(): Promise<void> {
-    await database.connect();
-  }
-
-  public async close(): Promise<void> {
-    await database.close();
-  }
 
   public start(): void {
     this.app.listen(this.port, () => {
@@ -48,4 +44,4 @@ export class SetupServer extends Server {
     });
   }
 }
-*/
+

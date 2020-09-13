@@ -4,12 +4,16 @@ import {Request, Response} from "express";
 import Jwt from "../config/Jwt";
 import {join} from "path";
 import {TipoUsuario} from "../entity/TipoUsuario";
+import { Controller , Get } from '@overnightjs/core';
+
+@Controller('login')
 export default class LoginController{
 
     async index(request: Request , response: Response){
 
     }
 
+    @Get()
     async login(request: Request , response: Response) {
 
         try {

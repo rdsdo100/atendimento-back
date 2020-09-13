@@ -7,8 +7,10 @@ import path from 'path'
 import dotenv from "dotenv"
 
 import {errors} from 'celebrate'
+import {SetupServer} from "./server";
 
-const port =  process.env.PORT || 3333
+const port = Number(process.env.PORT || 3333)
+/*
 const app =express()
 dotenv.config()
 
@@ -20,3 +22,9 @@ app.use(errors())
 
 
 app.listen(port , ()=>{ console.log(`Servidor aberto na porta: ${port}!!!`) });
+
+*/
+
+    const server = new SetupServer(port);
+     server.init();
+    server.start()

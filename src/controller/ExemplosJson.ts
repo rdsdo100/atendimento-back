@@ -1,8 +1,11 @@
 import {Request, Response} from "express";
+import { Controller , Get } from '@overnightjs/core';
+
+@Controller('exemplos')
 
 export default class ExemplosJson {
 
-
+@Get('cadastro')
     async  index (request: Request , response: Response) {
 
 
@@ -50,7 +53,7 @@ export default class ExemplosJson {
         })
 
     }
-
+@Get('login')
     async  indexLoginExemplos (request: Request , response: Response) {
 
 
