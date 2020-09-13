@@ -1,29 +1,19 @@
-import {ClassMiddleware, Controller, Get} from '@overnightjs/core';
 import {Request, Response} from "express";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
-import {Usuarios} from "@src/entity/Usuarios";
-import {Atendimentos} from "@src/entity/Atendimentos";
-import {Empresas} from "@src/entity/Empresas";
+import {Usuarios} from "../entity/Usuarios";
+import {Atendimentos} from "../entity/Atendimentos";
+import {Empresas} from "../entity/Empresas";
 import {Between, getRepository} from "typeorm/index";
-import {decodificar} from '@src/config/Jwt'
 
-
-
-@Controller('atendimentos')
-@ClassMiddleware([decodificar])
 export  default  class AtendimentosController {
 
-<<<<<<< HEAD
-    @Get('' )
-    async index (request: Request , response: Response) : Promise<void>{
+    async index (request: Request , response: Response){
 
-=======
->>>>>>> parent of d299de3... ok
         const verificarPrioridade = new VerificadorPrioridade()
 
         if(verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
         {
-             response.json({message: "Acesso Negado!"})
+            return response.json({message: "Acesso Negado!"})
         }
 
         const dataInicio = request.headers.datainicio
@@ -37,26 +27,17 @@ export  default  class AtendimentosController {
             }
         )
 
-         response.json(retorno)
+        return response.json(retorno)
 
     }
 
-    async  indexIdUsuarioDataHoje (request: Request , response: Response): Promise<void> {
+    async  indexIdUsuarioDataHoje (request: Request , response: Response){
 
-<<<<<<< HEAD
         try {
 
-            const retorno = await  Atendimentos.find({
+            let retorno = await  Atendimentos.find({
                 where: {dataCadastro : new Date()}
             } )
-=======
-        const verificarPrioridade = new VerificadorPrioridade()
-
-        if(!verificarPrioridade.isUserAdm(Number(request.body.decoded.tipoUsuario)))
-        {
-            return response.json({message: "Acesso Negado!"})
-        }
->>>>>>> parent of d299de3... ok
 
             const ret = retorno.map(item => {
 
@@ -67,15 +48,15 @@ export  default  class AtendimentosController {
                    return item
             })
 
-             response.json(ret)
+            return response.json(ret)
 
         } catch (err) {
-             response.json({err , message: err.message})
+            return response.json({err , message: err.message})
         }
 
     }
 
-    async cadastrarAtendimentos(request: Request , response: Response) : Promise<void>{
+    async cadastrarAtendimentos(request: Request , response: Response){
         const empresa = new Empresas()
         const usuario = new Usuarios()
         const atendimentos = new Atendimentos()
@@ -94,11 +75,11 @@ export  default  class AtendimentosController {
 
         const retornoAtendimenos = await atendimentoRepository.save(atendimentos)
 
-         response.json(retornoAtendimenos)
+        return response.json(retornoAtendimenos)
 
     }
 
-    async deletarAtendimentos(request: Request , response: Response) : Promise<void>{
+    async deletarAtendimentos(request: Request , response: Response){
 
         const params = request.params.id
 
@@ -108,11 +89,11 @@ export  default  class AtendimentosController {
         atendimento.id = Number(params)
 
         await atendimentoRepository.delete(atendimento.id)
-         response.json({deletado: atendimento.id})
+        return response.json({deletado: atendimento.id})
 
 
     }
 
-
+    async alterAtendimentos (request: Request , response: Response){}
 
 }

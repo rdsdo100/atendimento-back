@@ -1,31 +1,30 @@
-import { Controller, Get } from '@overnightjs/core';
 import {getRepository} from "typeorm/index";
-import {Usuarios} from "@src/entity/Usuarios";
+import {Usuarios} from "../entity/Usuarios";
 import {Request, Response} from "express";
-import {assinar} from "@src/config/Jwt";
-import {TipoUsuario} from "@src/entity/TipoUsuario";
-
-@Controller("login")
+import Jwt from "../config/Jwt";
+import {join} from "path";
+import {TipoUsuario} from "../entity/TipoUsuario";
 export default class LoginController{
 
-  /*  async index(request: Request , response: Response) : Promise<void> {
+    async index(request: Request , response: Response){
 
     }
-*/
-    @Get()
-    async login(request: Request , response: Response): Promise<void> {
+
+    async login(request: Request , response: Response) {
 
         try {
+
             const usuariosRepository = getRepository(Usuarios)
             const usuario = new Usuarios()
             const tipoUsuarios = new TipoUsuario()
-
+            const jwt = new Jwt()
             usuario.nomeUsuario = String(request.headers.user)
             usuario.senha = String(request.headers.password)
 
             const getUsuario = await usuariosRepository.findOne(
 
                 {
+
                     where: [
                         {nomeUsuario: usuario.nomeUsuario}
                     ]
@@ -33,17 +32,16 @@ export default class LoginController{
             )
 
             if ((!getUsuario?.nomeUsuario) || (getUsuario?.senha != usuario.senha)) {
-                 response.json({message: "Usuario  ou senha incorreto!"})
+                return response.json({message: "Usuario  ou senha incorreto!"})
             }
 
+            const authorization = jwt.assinar(Number(getUsuario.id),
+                String(getUsuario.nomeUsuario),
+                Number(getUsuario.tipoUsuarioIdFk.id))
 
-            const authorization = assinar(Number(getUsuario?.id),
-                String(getUsuario?.nomeUsuario),
-                Number(getUsuario?.tipoUsuarioIdFk.id))
-
-             response.json({
-                id: getUsuario?.id,
-                nomeUsuario: getUsuario?.nomeUsuario,
+            return response.json({
+                id: getUsuario.id,
+                nomeUsuario: getUsuario.nomeUsuario,
                 authorization
             })
 

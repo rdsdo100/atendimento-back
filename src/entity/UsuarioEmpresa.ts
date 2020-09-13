@@ -13,7 +13,7 @@ export class UsuarioEmpresa extends BaseEntity {
     nome:string
 
 
-    @ManyToOne(() => Empresas, (empresa) => empresa.usuarioEmpresa  ,{ eager: true})
+    @ManyToOne(() => Empresas, (empresa) => empresa.usuarioEmpresa  )
     @JoinColumn([{ name: "empresa_id_fk", referencedColumnName: "id" }])
     empresaIdFk: Empresas
 

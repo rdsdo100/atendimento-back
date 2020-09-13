@@ -1,23 +1,23 @@
 import {Request, Response} from "express";
 import {getRepository} from "typeorm/index";
-import {Empresas} from "@src/entity/Empresas";
+import {Empresas} from "../entity/Empresas";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
 
 export default  class EmpresaController{
 
-    async  index (request: Request , response: Response): Promise<void> {
+    async  index (request: Request , response: Response) {
 
         const getEmpresa = getRepository(Empresas)
         const retorno = await getEmpresa.find()
 
-         response.json(retorno)
+        return response.json(retorno)
 
     }
 
-    async cadastrEmoresa(request: Request , response: Response): Promise<void> {
+    async cadastrEmoresa(request: Request , response: Response){
 
         const verificadorPrioridade = new VerificadorPrioridade()
-        if(   !verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {
+        if( verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {
             response.json({message: "Acesso Negado!"})
         }
 
@@ -29,9 +29,9 @@ export default  class EmpresaController{
 
         try {
             const retorno = await empresaRepostory.save(empresa)
-             response.json(retorno)
+            return response.json(retorno)
         }catch (err){
-             response.json(
+            return response.json(
                 {
                     message: "Empreas Não cadastrada" ,
                     err
@@ -40,8 +40,5 @@ export default  class EmpresaController{
         }
     }
 
-/*
     async alterEmpresa(request: Request , response: Response){}
-    */
-
 }

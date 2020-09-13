@@ -1,11 +1,5 @@
-
-import"./util/module-alias"
 import "reflect-metadata";
 import './config/DataBaseConfig'
-import dotenv from "dotenv"
-
-import {SetupServer} from "@src/service";
-/*
 import express from 'express'
 import cors from 'cors'
 import Rotas from "./rotas/Rotas"
@@ -26,12 +20,3 @@ app.use(errors())
 
 
 app.listen(port , ()=>{ console.log(`Servidor aberto na porta: ${port}!!!`) });
-*/
-
-
-(async (): Promise<void> => {
-    const port =  Number(process.env.PORT || 3333)
-    const server = new SetupServer(port);
-    await server.init();
-    server.start();
-})();
