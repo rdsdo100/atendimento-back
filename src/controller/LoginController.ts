@@ -12,7 +12,7 @@ export default class LoginController{
 
     }
 
- @Get()
+    @Get()
     async login(request: Request , response: Response) {
 
         try {

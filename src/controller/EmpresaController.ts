@@ -2,10 +2,14 @@ import {Request, Response} from "express";
 import {getRepository} from "typeorm/index";
 import {Empresas} from "../entity/Empresas";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
+import { ClassMiddleware, Controller, Get, Post } from '@overnightjs/core';
+import { decodificar } from '../config/Jwt';
 
+@Controller('empresas')
+@ClassMiddleware([decodificar])
 export default  class EmpresaController{
 
-
+@Get()
     async  index (request: Request , response: Response) {
 
         const getEmpresa = getRepository(Empresas)
@@ -15,7 +19,8 @@ export default  class EmpresaController{
 
     }
 
-    async cadastrEmoresa(request: Request , response: Response){
+    @Post()
+    async cadastroEmoresa(request: Request , response: Response){
 
         const verificadorPrioridade = new VerificadorPrioridade()
         if( verificadorPrioridade.isUserAdm(Number(request.body.decoded.id))) {

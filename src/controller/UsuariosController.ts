@@ -2,9 +2,14 @@ import {Request, Response} from "express";
 import {Usuarios} from "../entity/Usuarios";
 import {getRepository} from "typeorm/index";
 import {TipoUsuario} from "../entity/TipoUsuario";
+import { ClassMiddleware, Controller, Delete, Get, Post } from '@overnightjs/core';
+import { decodificar } from '../config/Jwt';
 
+@Controller('usuarios')
+@ClassMiddleware([decodificar])
 export default class UsuariosController {
 
+    @Get()
     async index(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) !== 1){
@@ -20,7 +25,7 @@ export default class UsuariosController {
         return  response.json(getusuarios)
     }
 
-   
+   @Post()
     async cadastroUsuario(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) !== 1){
@@ -42,7 +47,7 @@ export default class UsuariosController {
 
     }
 
-    
+    @Delete()
     async deleteUsuario(request: Request , response: Response){
         if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})

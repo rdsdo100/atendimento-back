@@ -5,9 +5,9 @@ import {Request, Response} from "express";
 @Controller('/')
 export default class Inicio {
 
-@Get()
+    @Get()
     inicio (req: Request , res: Response) {
-    res.send({ok : 'Funcionando' , Name: 'Rubens'})
-}
+        res.send({ok : 'Funcionando' , Name: 'Rubens'})
+    }
 
 }

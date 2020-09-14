@@ -1,11 +1,14 @@
 import {Request, Response} from "express";
+import { Controller, Get, Middleware } from '@overnightjs/core';
+import { decodificar } from '../config/Jwt';
 
 
 
-
+@Controller('exemplos')
 export default class ExemplosJson {
 
-
+    @Get('cadastro')
+    @Middleware([decodificar])
     async  index (request: Request , response: Response) {
 
 
@@ -54,6 +57,7 @@ export default class ExemplosJson {
 
     }
 
+    @Get('login')
     async  indexLoginExemplos (request: Request , response: Response) {
 
 

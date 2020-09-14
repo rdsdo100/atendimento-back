@@ -8,6 +8,7 @@ import AtendimentosController from "./controller/AtendimentosController";
 import EmpresaController from "./controller/EmpresaController";
 import RequisicaoDesenvolvimentoController from "./controller/RequisicaoDesenvolvimentoController";
 import UsuariosController from "./controller/UsuariosController";
+import { rotas } from './util/rotasList';
 
 export class SetupServer extends Server {
 
@@ -29,16 +30,10 @@ export class SetupServer extends Server {
 
   private setupControllers(): void {
 
-    const atendimentos = new AtendimentosController()
-    const empresa = new EmpresaController()
-    const exemplos = new ExemplosJson()
-    const inicio = new Inicio()
-    const login = new LoginController()
-    const requisicaoDesenvolvimentoController = new RequisicaoDesenvolvimentoController()
-    const usuarios = new UsuariosController()
 
+console.log(rotas)
 
-this.addControllers([login , inicio]);
+this.addControllers(rotas);
 
     
   }
