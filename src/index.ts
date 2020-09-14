@@ -8,7 +8,7 @@ import dotenv from "dotenv"
 
 import {errors} from 'celebrate'
 import {SetupServer} from "./server";
-
+dotenv.config()
 const port = Number(process.env.PORT || 3333)
 /*
 const app =express()

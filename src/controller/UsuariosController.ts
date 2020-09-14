@@ -2,14 +2,9 @@ import {Request, Response} from "express";
 import {Usuarios} from "../entity/Usuarios";
 import {getRepository} from "typeorm/index";
 import {TipoUsuario} from "../entity/TipoUsuario";
-import {Controller, Delete, Get, Middleware, Post} from "@overnightjs/core";
-import {decodificar} from "../config/Jwt";
 
-@Controller('usuarios')
 export default class UsuariosController {
 
-    @Get()
-    @Middleware([decodificar])
     async index(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) !== 1){
@@ -18,15 +13,14 @@ export default class UsuariosController {
         const usuariosRepository = getRepository(Usuarios)
         let getusuarios = await usuariosRepository.find()
 
-        getusuarios.map(getusuarios => {
+       /* getusuarios.map(getusuarios => {
             delete getusuarios?.senha
-        })
+        })*/
 
         return  response.json(getusuarios)
     }
 
-    @Post()
-    @Middleware([decodificar])
+   
     async cadastroUsuario(request: Request , response: Response){
 
         if(Number(request.body.decoded.tipoUsuario) !== 1){
@@ -48,8 +42,7 @@ export default class UsuariosController {
 
     }
 
-    @Delete()
-    @Middleware([decodificar])
+    
     async deleteUsuario(request: Request , response: Response){
         if(Number(request.body.decoded.tipoUsuario) !== 1){
             return response.json({message: "Acesso Negado!"})

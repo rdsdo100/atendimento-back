@@ -4,14 +4,13 @@ import {Usuarios} from "../entity/Usuarios";
 import {Atendimentos} from "../entity/Atendimentos";
 import {Empresas} from "../entity/Empresas";
 import {Between, getRepository} from "typeorm/index";
-import {ClassMiddleware, Controller, Delete, Get, Middleware, Post} from "@overnightjs/core";
-import {decodificar} from "../config/Jwt";
 
-@Controller('atendimentos')
+
+
 
 export  default  class AtendimentosController {
 
-    @Get('all')
+
     async index (request: Request , response: Response){
 
         const verificarPrioridade = new VerificadorPrioridade()
@@ -33,7 +32,7 @@ export  default  class AtendimentosController {
         )
 
 
-        const ret = retorno.map(item => {
+   /*     const ret = retorno.map(item => {
 
             delete item.usuariosIdFk.senha
             delete item.usuariosIdFk.tipoUsuarioIdFk
@@ -42,13 +41,13 @@ export  default  class AtendimentosController {
             delete item.usuariosIdFk.senha
             return item
         })
+*/
 
-
-        return response.json(ret)
+        return response.json(retorno)
 
     }
 
-    @Get()
+    
     async  indexIdUsuarioDataHoje (request: Request , response: Response){
 
         try {
@@ -57,7 +56,7 @@ export  default  class AtendimentosController {
                 where: {dataCadastro : new Date()}
             } )
 
-            const ret = retorno.map(item => {
+             /* const ret = retorno.map(item => {
 
                 delete item.usuariosIdFk.senha
                 delete item.usuariosIdFk.tipoUsuarioIdFk
@@ -66,8 +65,8 @@ export  default  class AtendimentosController {
                 delete item.usuariosIdFk.senha
                    return item
             })
-
-            return response.json(ret)
+*/
+            return response.json(retorno)
 
         } catch (err) {
             return response.json({err , message: err.message})
@@ -75,7 +74,7 @@ export  default  class AtendimentosController {
 
     }
 
-    @Post()
+  
     async cadastrarAtendimentos(request: Request , response: Response){
         const empresa = new Empresas()
         const usuario = new Usuarios()

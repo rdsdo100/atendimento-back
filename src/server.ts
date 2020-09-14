@@ -1,6 +1,6 @@
-
-import { Server } from '@overnightjs/core';
-import { Application } from 'express';
+import express from 'express'
+import Rotas from "./rotas/Rotas"
+//import { Application } from 'express';
 import bodyParser from 'body-parser';
 import LoginController from "./controller/LoginController";
 import ExemplosJson from "./controller/ExemplosJson";
@@ -11,10 +11,14 @@ import EmpresaController from "./controller/EmpresaController";
 import RequisicaoDesenvolvimentoController from "./controller/RequisicaoDesenvolvimentoController";
 import UsuariosController from "./controller/UsuariosController";
 
-export class SetupServer extends Server {
+export class SetupServer  {
+
+  readonly app =express()
+
+
 
   constructor(private port = 3333) {
-    super();
+   
   }
 
   public async init(): Promise<void> {
@@ -31,7 +35,6 @@ export class SetupServer extends Server {
 
   private setupControllers(): void {
 
-
     const atendimentos = new AtendimentosController()
     const empresa = new EmpresaController()
     const exemplos = new ExemplosJson()
@@ -39,24 +42,9 @@ export class SetupServer extends Server {
     const login = new LoginController()
     const requisicaoDesenvolvimentoController = new RequisicaoDesenvolvimentoController()
     const usuarios = new UsuariosController()
-
-
-
-
-    this.addControllers(    [
-          login,
-          inicio,
-          exemplos
-        ]
-    );
+this.app.use(Rotas)
+    
   }
-
-  public getApp(): Application {
-    return this.app;
-  }
-
-
-
 
   public start(): void {
     this.app.listen(this.port, () => {
