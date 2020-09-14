@@ -4,13 +4,13 @@ import {Usuarios} from "../entity/Usuarios";
 import {Atendimentos} from "../entity/Atendimentos";
 import {Empresas} from "../entity/Empresas";
 import {Between, getRepository} from "typeorm/index";
+import { Controller, Get, Server } from '@overnightjs/core';
 
 
-
-
+@Controller('atendiemntos')
 export  default  class AtendimentosController {
 
-
+@Get()
     async index (request: Request , response: Response){
 
         const verificarPrioridade = new VerificadorPrioridade()

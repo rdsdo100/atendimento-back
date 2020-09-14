@@ -12,6 +12,7 @@
       "typescript": "^3.9.7"
    },
    "dependencies": {
+      "@overnightjs/core": "^1.7.5",
       "celebrate": "^12.1.2",
       "class-validator": "^0.12.2",
       "cors": "^2.8.5",
