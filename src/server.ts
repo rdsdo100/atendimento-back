@@ -8,6 +8,9 @@ import Inicio from "./controller/Inicio";
 import cors from 'cors'
 import AtendimentosController from "./controller/AtendimentosController";
 import {rotas} from "./util/rotasList";
+import EmpresaController from "./controller/EmpresaController";
+import RequisicaoDesenvolvimentoController from "./controller/RequisicaoDesenvolvimentoController";
+import UsuariosController from "./controller/UsuariosController";
 
 export class SetupServer extends Server {
 
@@ -24,14 +27,29 @@ export class SetupServer extends Server {
   private setupExpress(): void {
     this.app.use(bodyParser.json());
     this.setupControllers();
-    this.GetUse()
+    //this.GetUse()
   }
 
   private setupControllers(): void {
 
 
+    const atendimentos = new AtendimentosController()
+    const empresa = new EmpresaController()
+    const exemplos = new ExemplosJson()
+    const inicio = new Inicio()
+    const login = new LoginController()
+    const requisicaoDesenvolvimentoController = new RequisicaoDesenvolvimentoController()
+    const usuarios = new UsuariosController()
 
-    this.addControllers(rotas);
+
+
+
+    this.addControllers(    [
+          login,
+          inicio,
+          exemplos
+        ]
+    );
   }
 
   public getApp(): Application {
