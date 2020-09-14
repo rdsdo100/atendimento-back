@@ -8,7 +8,7 @@ import {ClassMiddleware, Controller, Delete, Get, Middleware, Post} from "@overn
 import {decodificar} from "../config/Jwt";
 
 @Controller('atendimentos')
-//@ClassMiddleware(decodificar)
+
 export  default  class AtendimentosController {
 
     @Get('all')

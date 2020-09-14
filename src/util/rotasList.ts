@@ -18,6 +18,5 @@ const usuarios = new UsuariosController()
 export const rotas = [
     login,
     inicio,
-    exemplos,
-    atendimentos
+    exemplos
 ]
