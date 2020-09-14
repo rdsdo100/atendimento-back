@@ -1,13 +1,7 @@
 import { Server } from '@overnightjs/core';
-import { Application } from 'express';
 import bodyParser from 'body-parser';
-import LoginController from "./controller/LoginController";
-import ExemplosJson from "./controller/ExemplosJson";
-import Inicio from "./controller/Inicio";
-import AtendimentosController from "./controller/AtendimentosController";
-import EmpresaController from "./controller/EmpresaController";
-import RequisicaoDesenvolvimentoController from "./controller/RequisicaoDesenvolvimentoController";
-import UsuariosController from "./controller/UsuariosController";
+
+
 import { rotas } from './util/rotasList';
 
 export class SetupServer extends Server {
@@ -25,16 +19,12 @@ export class SetupServer extends Server {
   private setupExpress(): void {
     this.app.use(bodyParser.json());
     this.setupControllers();
-    //this.GetUse()
   }
 
   private setupControllers(): void {
-
-
 console.log(rotas)
 
 this.addControllers(rotas);
-
     
   }
 
