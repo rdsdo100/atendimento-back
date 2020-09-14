@@ -7,6 +7,7 @@ import ExemplosJson from "./controller/ExemplosJson";
 import Inicio from "./controller/Inicio";
 import cors from 'cors'
 import AtendimentosController from "./controller/AtendimentosController";
+import {rotas} from "./util/rotasList";
 
 export class SetupServer extends Server {
 
@@ -28,12 +29,9 @@ export class SetupServer extends Server {
 
   private setupControllers(): void {
 
-    const login = new LoginController()
-    const exemplos = new ExemplosJson()
-    const atendimentos = new AtendimentosController()
-    const inicio = new Inicio()
 
-    this.addControllers([login ,inicio , exemplos, atendimentos]);
+
+    this.addControllers(rotas);
   }
 
   public getApp(): Application {

@@ -4,13 +4,14 @@ import {Usuarios} from "../entity/Usuarios";
 import {Atendimentos} from "../entity/Atendimentos";
 import {Empresas} from "../entity/Empresas";
 import {Between, getRepository} from "typeorm/index";
-import {Controller, Delete, Get, Middleware, Post} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Delete, Get, Middleware, Post} from "@overnightjs/core";
 import {decodificar} from "../config/Jwt";
 
 @Controller('atendimentos')
+@ClassMiddleware(decodificar)
 export  default  class AtendimentosController {
+
     @Get('all')
-    @Middleware([decodificar])
     async index (request: Request , response: Response){
 
         const verificarPrioridade = new VerificadorPrioridade()
@@ -48,7 +49,6 @@ export  default  class AtendimentosController {
     }
 
     @Get()
-    @Middleware([decodificar])
     async  indexIdUsuarioDataHoje (request: Request , response: Response){
 
         try {
@@ -76,7 +76,6 @@ export  default  class AtendimentosController {
     }
 
     @Post()
-    @Middleware([decodificar])
     async cadastrarAtendimentos(request: Request , response: Response){
         const empresa = new Empresas()
         const usuario = new Usuarios()
@@ -100,8 +99,7 @@ export  default  class AtendimentosController {
 
     }
 
-    @Delete('/:id')
-    @Middleware([decodificar])
+
     async deletarAtendimentos(request: Request , response: Response){
 
         const params = request.params.id
