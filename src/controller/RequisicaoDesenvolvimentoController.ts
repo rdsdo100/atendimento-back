@@ -3,11 +3,13 @@ import {RequisicaoDesenvolvimento} from "../entity/RequisicaoDesenvolvimento";
 import {Atendimentos} from "../entity/Atendimentos";
 import {getRepository} from "typeorm";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
+import {Controller, Delete, Get, Middleware, Post, Put} from "@overnightjs/core";
+import {decodificar} from "../config/Jwt";
 
+@Controller('req-dev')
 export  default class RequisicaoDesenvolvimentoController {
-
-
-
+    @Get()
+    @Middleware([decodificar])
     async index(request: Request , response: Response){
 
         const verificadorPrioridade = new VerificadorPrioridade()
@@ -28,6 +30,8 @@ export  default class RequisicaoDesenvolvimentoController {
 
     }
 
+    @Post()
+    @Middleware([decodificar])
     async cadastroRequisicao (request: Request , response: Response){
 
 
@@ -54,7 +58,11 @@ export  default class RequisicaoDesenvolvimentoController {
 
     }
 
+    @Put()
+    @Middleware([decodificar])
     async alterRequisicao(request: Request , response: Response){}
 
+    @Delete()
+    @Middleware([decodificar])
     async deleteRequisicao(request: Request , response: Response){}
 }

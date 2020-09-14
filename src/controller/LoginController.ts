@@ -1,7 +1,7 @@
 import {getRepository} from "typeorm/index";
 import {Usuarios} from "../entity/Usuarios";
 import {Request, Response} from "express";
-import Jwt from "../config/Jwt";
+import {assinar} from "../config/Jwt";
 import {TipoUsuario} from "../entity/TipoUsuario";
 import { Controller , Get } from '@overnightjs/core';
 
@@ -20,7 +20,7 @@ export default class LoginController{
             const usuariosRepository = getRepository(Usuarios)
             const usuario = new Usuarios()
             const tipoUsuarios = new TipoUsuario()
-            const jwt = new Jwt()
+
             usuario.nomeUsuario = String(request.headers.user)
             usuario.senha = String(request.headers.password)
 
@@ -38,7 +38,7 @@ export default class LoginController{
                 return response.json({message: "Usuario  ou senha incorreto!"})
             }
 
-            const authorization = jwt.assinar(Number(getUsuario.id),
+            const authorization = assinar(Number(getUsuario.id),
                 String(getUsuario.nomeUsuario),
                 Number(getUsuario.tipoUsuarioIdFk.id))
 
