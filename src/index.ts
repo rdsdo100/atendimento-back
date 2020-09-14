@@ -1,12 +1,6 @@
 import "reflect-metadata";
 import './config/DataBaseConfig'
-import express from 'express'
-import cors from 'cors'
-import Rotas from "./rotas/Rotas"
-import path from 'path'
 import dotenv from "dotenv"
-
-import {errors} from 'celebrate'
 import {SetupServer} from "./server";
 dotenv.config()
 const port = Number(process.env.PORT || 3333)
