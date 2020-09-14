@@ -5,9 +5,8 @@ import bodyParser from 'body-parser';
 import LoginController from "./controller/LoginController";
 import ExemplosJson from "./controller/ExemplosJson";
 import Inicio from "./controller/Inicio";
-import cors from 'cors'
+
 import AtendimentosController from "./controller/AtendimentosController";
-import {rotas} from "./util/rotasList";
 import EmpresaController from "./controller/EmpresaController";
 import RequisicaoDesenvolvimentoController from "./controller/RequisicaoDesenvolvimentoController";
 import UsuariosController from "./controller/UsuariosController";
@@ -56,12 +55,7 @@ export class SetupServer extends Server {
     return this.app;
   }
 
-  private GetUse() : void{
 
-    this.app.use(cors())
-
-
-  }
 
 
   public start(): void {
