@@ -1,3 +1,5 @@
+/*
+
 import express from 'express'
 import {decodificar} from "../config/Jwt";
 import UsuariosController from "../controller/UsuariosController";
@@ -32,7 +34,7 @@ route.get('/desenvolvimento' , decodificar , reqDesenvolvimento.index )
 route.post('/desenvolvimento' , decodificar , reqDesenvolvimento.cadastroRequisicao )
 
 route.get ('/list-empresa' , decodificar , empresaController.index)
-route.post('/cad-empresa' , decodificar , empresaController.cadastrEmoresa)
+route.post('/cad-empresa' , decodificar , empresaController.cadastroEmoresa)
 
 route.get('/login' , loginController.login )
 
@@ -41,7 +43,7 @@ route.get("/exemplos-Login" , exemplos.indexLoginExemplos )
 
 export default route
 
-
+*/
 
 /*route.post('/atendimentos',
     celebrate(atendimentoVerification , paramsVerification) ,
