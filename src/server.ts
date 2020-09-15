@@ -1,6 +1,6 @@
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
-
+import cors from 'cors'
 
 import { rotas } from './util/rotasList';
 
@@ -17,6 +17,7 @@ export class SetupServer extends Server {
   }
 
   private setupExpress(): void {
+    this.app.use(cors())
     this.app.use(bodyParser.json());
     this.setupControllers();
   }
