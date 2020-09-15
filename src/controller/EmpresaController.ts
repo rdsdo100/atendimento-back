@@ -4,18 +4,39 @@ import {Empresas} from "../entity/Empresas";
 import VerificadorPrioridade from "./util/VerificadorPrioridade";
 import { ClassMiddleware, Controller, Get, Post } from '@overnightjs/core';
 import { decodificar } from '../config/Jwt';
+import { GrupoEmpresa } from '../entity/GrupoEmpresa';
 
 @Controller('empresas')
 @ClassMiddleware([decodificar])
 export default  class EmpresaController{
 
-@Get()
+    @Get()
     async  index (request: Request , response: Response) {
+        try {
+            const getEmpresa = getRepository(Empresas)
+            const retorno = await getEmpresa.find()
 
-        const getEmpresa = getRepository(Empresas)
-        const retorno = await getEmpresa.find()
+            return response.json(retorno)
 
-        return response.json(retorno)
+        } catch (err){
+            return response.json(err)
+        }
+
+    }
+
+    @Get('grupo-empresas')
+    async indexGrupoEmpresas(request: Request , response: Response){
+
+        try {
+            const getGrupoEmpresa = getRepository(GrupoEmpresa)
+            const retorno = await getGrupoEmpresa.find()
+
+            return response.json(retorno)
+
+        } catch (err){
+            return response.json(err)
+        }
+
 
     }
 
@@ -38,10 +59,10 @@ export default  class EmpresaController{
             return response.json(retorno)
         }catch (err){
             return response.json(
-                {
-                    message: "Empreas Não cadastrada" ,
-                    err
-                }
+              {
+                  message: "Empreas Não cadastrada" ,
+                  err
+              }
             )
         }
     }

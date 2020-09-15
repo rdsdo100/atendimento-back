@@ -26,9 +26,7 @@ export class Empresas extends BaseEntity {
     @OneToMany(() => UsuarioEmpresa, (usuarioEmpresa) => usuarioEmpresa.empresaIdFk)
     usuarioEmpresa: UsuarioEmpresa[];
 
-
-
-    @ManyToOne(() => GrupoEmpresa, (grupoEmpresa) => grupoEmpresa.empresa, )
+    @ManyToOne(() => GrupoEmpresa, (grupoEmpresa) => grupoEmpresa.empresa, {eager: true})
     @JoinColumn([{name: "grupo_empressa_id_fk", referencedColumnName: "id"}])
     empresaIdFk: TipoUsuario
 
