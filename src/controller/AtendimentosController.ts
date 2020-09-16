@@ -29,7 +29,7 @@ export  default  class AtendimentosController {
 
         const retorno = await atendimentoRepository.find(
             {
-                where:  {dataCadastro: Between(dataInicio, dataFim)}
+                //where:  {dataCadastro: Between(dataInicio, dataFim)}
             }
         )
 
