@@ -1,8 +1,8 @@
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import cors from 'cors'
+import Inicio from './controller/Inicio';
 
-import { rotas } from './util/rotasList';
 
 export class SetupServer extends Server {
 
@@ -23,15 +23,14 @@ export class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-console.log(rotas)
-
-this.addControllers(rotas);
+    const inicio = new Inicio()
+    this.addControllers([inicio]);
     
   }
 
   public start(): void {
     this.app.listen(this.port, () => {
-      console.info('Server listening on port: ' + this.port);
+      console.info('Server aberto na porta: ' + this.port);
     });
   }
 }
