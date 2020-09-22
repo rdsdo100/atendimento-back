@@ -1,7 +1,7 @@
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import cors from 'cors'
-import Inicio from './controller/Inicio';
+import {routes} from './routes/routes';
 
 
 export class SetupServer extends Server {
@@ -23,8 +23,8 @@ export class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    const inicio = new Inicio()
-    this.addControllers([inicio]);
+    
+    this.addControllers(routes);
     
   }
 
