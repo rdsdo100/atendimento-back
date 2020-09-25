@@ -2,7 +2,10 @@ import {Column,
     CreateDateColumn, 
     Entity, 
     PrimaryGeneratedColumn, 
-    UpdateDateColumn} from "typeorm";
+    UpdateDateColumn,
+    ManyToOne,
+JoinColumn} from "typeorm";
+import { GrupoUsuarios } from "./GrupoUsuarios";
 
 @Entity()
 export class Usuarios {
@@ -20,9 +23,15 @@ export class Usuarios {
     senha: string
 
     @CreateDateColumn()
-    createdAt: string;
+    createdAt: Date;
     
     @UpdateDateColumn({ type: "timestamp" })
-    updatedAt: number;
+    updatedAt: Date;
+
+
+    @ManyToOne(() => GrupoUsuarios, (grupoUsuaruios) => grupoUsuaruios.usuarios, {eager: true})
+    @JoinColumn([{name: "grupo_usuarios_id_fk", referencedColumnName: "id"}])
+    usuariosIdfK: GrupoUsuarios
+
     
 }
