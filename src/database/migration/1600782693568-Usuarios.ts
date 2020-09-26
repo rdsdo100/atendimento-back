@@ -10,6 +10,7 @@ create table if not exists usuarios (
                           nome varchar not null,
                           email varchar not null unique,
                           senha varchar not null,
+                          matricula varchar not null,
                           "createdAt" timestamp default now() not null,
                           "updatedAt" timestamp default now() not null,
                           grupo_usuarios_id_fk integer,
