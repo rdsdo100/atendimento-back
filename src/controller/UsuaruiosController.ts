@@ -2,6 +2,7 @@ import {Controller, Delete, Get, Post} from "@overnightjs/core";
 import { getRepository } from "typeorm";
 import { Usuarios } from "../entity/Usuarios";
 import {Request , Response} from 'express'
+import { string } from "@hapi/joi";
 
 @Controller('user')
 export default class UsuaruiosController {
@@ -31,6 +32,12 @@ export default class UsuaruiosController {
         const setUsuarios = getRepository(Usuarios)
 
         try {
+
+usuarios.nome = String(request.body.nome)
+usuarios.email = String(request.body.email)
+usuarios.senha = String(request.body.senha)
+usuarios.matricula = String(request.body.matricula)
+usuarios.usuariosIdfK.id = Number(request.body.grupoUsuario)
 
             const resposta = await setUsuarios.save(usuarios)
             response.json( resposta )

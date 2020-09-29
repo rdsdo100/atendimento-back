@@ -1,7 +1,8 @@
 import { Controller, Get } from "@overnightjs/core";
 import {Request, Response} from "express";
+import {Nivel} from '../util/Nivel'
 
-@Controller('/exemplos')
+@Controller('exemplos')
 export default class Exemplos {
 
 @Get('rotas')

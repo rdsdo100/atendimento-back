@@ -22,6 +22,9 @@ export class Usuarios {
     @Column()
     senha: string
 
+    @Column()
+    matricula: string
+
     @CreateDateColumn()
     createdAt: Date;
     

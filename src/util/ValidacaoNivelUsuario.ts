@@ -1,3 +1,4 @@
+import {Nivel} from './Nivel'
 export default class ValidacaoNivelUsuario{
 
     nivel: number
@@ -6,9 +7,11 @@ export default class ValidacaoNivelUsuario{
 this.nivel = nivel
     }
 
-    async buscanivelUsuario (){
-
+    
+async buscanivelUsuario ()  : Promise<boolean>{
+return true
     }
+
 
    
 
