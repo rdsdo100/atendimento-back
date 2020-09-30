@@ -10,6 +10,7 @@ exemploRotas (_: Request , response: Response){
 response.json({
 
     usuarios: {
+    usuarios: {
         rota: "/user",
         requisicao: {
             get: {
@@ -69,7 +70,7 @@ update:{
     }
 
 
-
+    }
   
 
 })
