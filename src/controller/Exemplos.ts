@@ -7,7 +7,72 @@ export default class Exemplos {
 
 @Get('rotas')
 exemploRotas (_: Request , response: Response){
-response.json({})
+response.json({
+
+    usuarios: {
+        rota: "/user",
+        requisicao: {
+            get: {
+            heades: {},
+            params: "",
+            body:{}
+        },
+            post: {
+                heades: {},
+                params: "",
+                body:{
+                    "nome" : "string",
+                    "email" : "string",
+                    "senha" : "string",
+                    "matricula" : "string",
+                    "grupoUsuario" : "number" 
+            }
+        }
+            ,
+            delete: {
+                heades: {},
+                params: "/number",
+                body:{}
+},
+update:{ heades: {},
+params: "/number",
+body:{}}
+        }
+        
+    } ,
+    gupoUsuario: {
+        rota: "/gupo-usuario",
+        requisicao: {
+            get: {
+            heades: {},
+            params: "",
+            body:{}
+        },
+            post: {
+                heades: {},
+                params: "",
+                body:{}
+        }
+            ,
+            delete: {
+                heades: {},
+                params: "/number",
+                body:{}
+},
+update:{
+    heades: {},
+    params: "/number",
+    body:{}
+}
+        }
+        
+    }
+
+
+
+  
+
+})
 
 }
 

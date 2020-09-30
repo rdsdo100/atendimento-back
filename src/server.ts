@@ -12,7 +12,7 @@ export class SetupServer extends Server {
 
   public async init(): Promise<void> {
     this.setupExpress();
-    this.setupControllers();
+
 
   }
 

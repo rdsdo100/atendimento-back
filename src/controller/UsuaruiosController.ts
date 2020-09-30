@@ -2,47 +2,37 @@ import {Controller, Delete, Get, Post} from "@overnightjs/core";
 import { getRepository } from "typeorm";
 import { Usuarios } from "../entity/Usuarios";
 import {Request , Response} from 'express'
-import { string } from "@hapi/joi";
+import {GrupoUsuarios} from "../entity/GrupoUsuarios";
+
 
 @Controller('user')
 export default class UsuaruiosController {
 
-
-
-    @Get()
-    async index(request: Request , response: Response){
-
-        const usuarios = new Usuarios()
-        const setUsuarios = getRepository(Usuarios)
-        try {
-            const resposta = await setUsuarios.find()
-            response.json( resposta )
-
-        } catch (err){
-            response.json( {
-                mesage : err.mesage ,
-                err} )
-        }
-    }
+  
 
     @Post()
     async cadastroUsuarios(request: Request , response: Response){
 
         const usuarios = new Usuarios()
+        const grupoUsuaruios = new  GrupoUsuarios()
         const setUsuarios = getRepository(Usuarios)
 
         try {
 
-usuarios.nome = String(request.body.nome)
-usuarios.email = String(request.body.email)
-usuarios.senha = String(request.body.senha)
-usuarios.matricula = String(request.body.matricula)
-usuarios.usuariosIdfK.id = Number(request.body.grupoUsuario)
+            usuarios.nome = String(request.body.nome)
+            usuarios.email = String(request.body.email)
+            usuarios.senha = String(request.body.senha)
+            usuarios.matricula = String(request.body.matricula)
+           grupoUsuaruios.id = Number(request.body.grupoUsuario)
+            usuarios.usuariosIdfK = grupoUsuaruios
+
+            console.log(usuarios)
+
 
             const resposta = await setUsuarios.save(usuarios)
-            response.json( resposta )
+            return   response.json( resposta )
         } catch (err) {
-            response.json( {
+            return  response.json( {
                 mesage : err.mesage ,
                 err} )
         }
