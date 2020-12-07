@@ -1,41 +1,32 @@
-import {Controller, Delete, Get, Post} from "@overnightjs/core";
+import {Controller, Delete, Post} from "@overnightjs/core";
 import { getRepository } from "typeorm";
 import { Usuarios } from "../entity/Usuarios";
 import {Request , Response} from 'express'
 import {GrupoUsuarios} from "../entity/GrupoUsuarios";
+import UsuariosBusiness from "../business/UsuariosBusiness";
 
 
 @Controller('user')
 export default class UsuaruiosController {
-
-  
 
     @Post()
     async cadastroUsuarios(request: Request , response: Response){
 
         const usuarios = new Usuarios()
         const grupoUsuaruios = new  GrupoUsuarios()
-        const setUsuarios = getRepository(Usuarios)
-
-        try {
-
-            usuarios.nome = String(request.body.nome)
-            usuarios.email = String(request.body.email)
-            usuarios.senha = String(request.body.senha)
-            usuarios.matricula = String(request.body.matricula)
-           grupoUsuaruios.id = Number(request.body.grupoUsuario)
-            usuarios.usuariosIdfK = grupoUsuaruios
-
-            console.log(usuarios)
+        const  usuariosBusiness = new UsuariosBusiness()
 
 
-            const resposta = await setUsuarios.save(usuarios)
-            return   response.json( resposta )
-        } catch (err) {
-            return  response.json( {
-                mesage : err.mesage ,
-                err} )
-        }
+        usuarios.nome = String(request.body.nome)
+        usuarios.email = String(request.body.email)
+        usuarios.senha = String(request.body.senha)
+        usuarios.matricula = String(request.body.matricula)
+        grupoUsuaruios.id = Number(request.body.grupoUsuario)
+        usuarios.usuariosIdfK = grupoUsuaruios
+
+        usuariosBusiness.cadastroUsuariosBuisiness(usuarios)
+
+        return   response.json(  {})
 
     }
 
