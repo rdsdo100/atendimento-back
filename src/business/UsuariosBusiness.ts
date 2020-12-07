@@ -4,7 +4,6 @@ import {getRepository} from "typeorm";
 
 export default  class UsuariosBusiness{
 
-
     async cadastroUsuariosBuisiness(usuarios : Usuarios){
 
         const setUsuarios = getRepository(Usuarios)
@@ -19,11 +18,9 @@ export default  class UsuariosBusiness{
         }
 
     }
-    
+
     async deletarUsuario(request: Request , response: Response){
         const deletar = Number(request.params.id)
-
-
 
         const setUsuarios = getRepository(Usuarios)
 
@@ -34,8 +31,6 @@ export default  class UsuariosBusiness{
         })
         response.json( resposta )
 
-
     }
-
 
 }
