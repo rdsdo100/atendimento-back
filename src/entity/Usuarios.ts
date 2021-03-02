@@ -1,13 +1,9 @@
 import {
     Column,
-    CreateDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    ManyToOne,
-    JoinColumn, BaseEntity
+   BaseEntity
 } from "typeorm";
-import { GrupoUsuarios } from "./GrupoUsuarios";
 
 @Entity()
 export class Usuarios extends BaseEntity {

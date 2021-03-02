@@ -17,12 +17,12 @@ export default class UsuaruiosController {
         const  usuariosBusiness = new UsuariosBusiness()
 
 
-        usuarios.nome = String(request.body.nome)
+        usuarios.nomeUsuario = String(request.body.nome)
         usuarios.email = String(request.body.email)
         usuarios.senha = String(request.body.senha)
         usuarios.matricula = String(request.body.matricula)
         grupoUsuaruios.id = Number(request.body.grupoUsuario)
-        usuarios.usuariosIdfK = grupoUsuaruios
+
 
         usuariosBusiness.cadastroUsuariosBuisiness(usuarios)
 

@@ -21,7 +21,7 @@ export default class LoginController{
             const usuario = new Usuarios()
             const loginBusiness = new LoginBusiness()
 
-            usuario.nome = String(request.headers.user)
+            usuario.nomeUsuario = String(request.headers.user)
             usuario.senha = String(request.headers.password)
             loginBusiness.login(usuario)
 
