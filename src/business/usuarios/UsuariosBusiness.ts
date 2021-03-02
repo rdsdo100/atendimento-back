@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {Usuarios} from "../entity/Usuarios";
+import {Usuarios} from "../../entity/Usuarios";
 import {getRepository} from "typeorm";
 
 export default  class UsuariosBusiness{

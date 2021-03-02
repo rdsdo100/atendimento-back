@@ -1,7 +1,7 @@
 import { Controller, Get, Post } from "@overnightjs/core";
 import {Request , Response} from 'express'
 import { getRepository } from "typeorm";
-import {GrupoUsuarios} from "../entity/GrupoUsuarios";
+import {GrupoUsuarios} from "../../entity/GrupoUsuarios";
 
 @Controller('gupo-usuario')
 export default class GurpoUsuarioController {

@@ -1,19 +1,19 @@
-import Exemplos from '../controller/Exemplos'
-import GurpoUsuarioController from '../controller/GurpoUsuarioController';
+import GurpoUsuarioController from '../controller/usuarios/GurpoUsuarioController';
 import Inicio from '../controller/Inicio'
-import UsuaruiosController from "../controller/UsuaruiosController";
+import UsuaruiosController from "../controller/usuarios/UsuaruiosController";
+import LoginController from "../controller/usuarios/LoginController";
 
 
 const inicio = new Inicio()
-const exemplos = new Exemplos()
 const usuario = new UsuaruiosController()
 const grupoUsusarios = new GurpoUsuarioController()
+const login = new LoginController()
 
 
 export const routes = [
-    inicio, 
-    exemplos,
+    inicio,
     usuario,
+    login,
     grupoUsusarios
 
 ]

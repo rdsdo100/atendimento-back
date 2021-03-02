@@ -2,8 +2,10 @@ import {
     Column,
     Entity,
     PrimaryGeneratedColumn,
-   BaseEntity
+    BaseEntity, ManyToOne, JoinColumn, OneToMany
 } from "typeorm";
+import {GrupoUsuarios} from "./GrupoUsuarios";
+import {Atendimentos} from "./Atendimentos";
 
 @Entity()
 export class Usuarios extends BaseEntity {
@@ -29,5 +31,11 @@ export class Usuarios extends BaseEntity {
     @Column()
     bloqueado: boolean;
 
+    @ManyToOne(() => GrupoUsuarios, (grupoUsuarios) => grupoUsuarios.usuarios)
+    @JoinColumn([{ name: 'grupo_usuarios_id_fk', referencedColumnName: 'id' }])
+    grupoUsuariosIdFK: GrupoUsuarios;
+
+    @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFK)
+    atendimentos: Atendimentos[];
     
 }

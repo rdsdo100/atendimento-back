@@ -17,6 +17,7 @@ export class GrupoUsuarios extends BaseEntity {
     @Column()
     nome: string
 
- 
+    @OneToMany(() => Usuarios, (usuarios) => usuarios.grupoUsuariosIdFK)
+    usuarios: Usuarios[];
    
 }

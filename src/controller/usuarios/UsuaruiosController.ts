@@ -1,9 +1,9 @@
 import {Controller, Delete, Post} from "@overnightjs/core";
 import { getRepository } from "typeorm";
-import { Usuarios } from "../entity/Usuarios";
+import { Usuarios } from "../../entity/Usuarios";
 import {Request , Response} from 'express'
-import {GrupoUsuarios} from "../entity/GrupoUsuarios";
-import UsuariosBusiness from "../business/UsuariosBusiness";
+import {GrupoUsuarios} from "../../entity/GrupoUsuarios";
+import UsuariosBusiness from "../../business/usuarios/UsuariosBusiness";
 
 
 @Controller('user')

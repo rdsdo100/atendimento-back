@@ -1,10 +1,7 @@
-import {getRepository} from "typeorm/index";
 import {Request, Response} from "express";
 import { Controller, Get } from '@overnightjs/core';
-import {Usuarios} from "../entity/Usuarios";
-import {GrupoUsuarios} from "../entity/GrupoUsuarios";
-import {assinar} from "../config/Jwt";
-import LoginBusiness from "../business/LoginBusiness";
+import {Usuarios} from "../../entity/Usuarios";
+import LoginBusiness from "../../business/usuarios/LoginBusiness";
 
 @Controller('login')
 export default class LoginController{
@@ -23,12 +20,13 @@ export default class LoginController{
 
             usuario.nomeUsuario = String(request.headers.user)
             usuario.senha = String(request.headers.password)
-            loginBusiness.login(usuario)
+            const retorno = await loginBusiness.login(usuario)
 
+            return response.json(retorno)
 
         } catch (error) {
 
-            response.json(error)
+           return  response.json(error)
 
         }
     }
