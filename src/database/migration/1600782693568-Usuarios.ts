@@ -1,37 +1,89 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class Usuarios1600782693568 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await  queryRunner.query(`
-        
-create table if not exists usuarios (
-                          id  serial not null primary key,
-                          nome varchar not null,
-                          email varchar not null unique,
-                          senha varchar not null,
-                          matricula varchar not null,
-                          "createdAt" timestamp default now() not null,
-                          "updatedAt" timestamp default now() not null,
-                          grupo_usuarios_id_fk integer,
-                          constraint usuarios_grupo_usuarios_id_fk foreign key (grupo_usuarios_id_fk) references grupo_usuarios (id)
+
+
+
+await queryRunner.createTable(
+    new Table({
+
+
+name: 'usuarios',
+columns:[
+    {
+        name: 'id',
+        type: 'int',
+        isPrimary: true,
+        isGenerated: true,
+        generationStrategy: 'increment',
+    },
+    {
+        name: 'nome_usuario',
+        type: 'varchar',
+        length: '50',
+        isNullable: false,
+        isUnique: true,
+    },
+    {
+        name: 'email',
+        type: 'varchar',
+        length: '90',
+        isNullable: false,
+        isUnique: true,
+    },
+    {
+        name: 'senha',
+        type: 'varchar',
+        length: '30',
+        isNullable: false,
+    },
+    {
+        name: 'matricula',
+        type: 'varchar',
+        length: '30',
+        isNullable: true,
+    },
+    {
+        name: 'ativo',
+        type: 'boolean',
+        default: true,
+
+    },
+    {
+        name: 'bloqueado',
+        type: 'boolean',
+        default: true,
+    },  
+    {
+        name: 'grupo_usuarios_id_fk',
+        type: 'int',
+    },
+]
+
+    })
+
+    
+)
+
+await queryRunner.createForeignKey(
+    'usuarios',
+    new TableForeignKey({
+        columnNames: ['grupo_usuarios_id_fk'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'grupo_usuarios',
+        name: 'usuarios_grupos_usuarios',
+    }),
 );
 
-        `)
+
+     
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
 
-        await  queryRunner.query(`
-        alter table usuarios
-    drop constraint if exists usuarios_grupo_usuarios_id_fk cascade;
-
-        `)
-
-
-        await  queryRunner.query(`
-        drop table usuarios
-        `)
+     
 
     }
 

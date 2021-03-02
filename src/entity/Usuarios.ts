@@ -12,31 +12,26 @@ import { GrupoUsuarios } from "./GrupoUsuarios";
 @Entity()
 export class Usuarios extends BaseEntity {
 
-@PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ name: 'nome_usuario', length: 50 })
+    nomeUsuario: string;
+
+    @Column({ length: 90, unique: true })
+    email: string;
+
+    @Column({ length: 30 })
+    senha: string;
+
+    @Column({ length: 30 })
+    matricula: string;
 
     @Column()
-    nome: string
-
-    @Column({unique:true})
-    email: string
+    ativo: boolean;
 
     @Column()
-    senha: string
-
-    @Column()
-    matricula: string
-
-    @CreateDateColumn()
-    createdAt: Date;
-    
-    @UpdateDateColumn({ type: "timestamp" })
-    updatedAt: Date;
-
-
-    @ManyToOne(() => GrupoUsuarios, (grupoUsuaruios) => grupoUsuaruios.usuarios, {eager: true})
-    @JoinColumn([{name: "grupo_usuarios_id_fk", referencedColumnName: "id"}])
-    usuariosIdfK: GrupoUsuarios
+    bloqueado: boolean;
 
     
 }

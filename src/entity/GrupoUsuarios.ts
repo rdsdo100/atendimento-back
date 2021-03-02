@@ -17,14 +17,6 @@ export class GrupoUsuarios extends BaseEntity {
     @Column()
     nome: string
 
-    @CreateDateColumn()
-    createdAt: Date;
-    
-    @UpdateDateColumn({ type: "timestamp" })
-    updatedAt: Date;
-
-
-    @OneToMany(() => Usuarios, (usuarios) => usuarios.usuariosIdfK)
-    usuarios:Usuarios[];
-
+ 
+   
 }

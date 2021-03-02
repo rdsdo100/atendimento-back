@@ -1,22 +1,34 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {Column, MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class GrupoUsuarios1600782688818 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
-create table if not exists grupo_usuarios (
-                                id serial not null primary key,
-                                nome varchar not null,
-                                "createdAt" timestamp default now() not null,
-                                "updatedAt" timestamp default now() not null
-);     
-        `)
+            await queryRunner.createTable(
+            new Table({
+name: 'grupo_usuarios',
+columns: [
+    {
+        name: 'id',
+        type: 'int',
+        isPrimary: true,
+        isGenerated: true,
+        generationStrategy: 'increment',
+    },
+    {
+        name: 'nome',
+        type: 'varchar',
+        length: '50',
+        isNullable: false,
+        isUnique: true,
+    },
+]
+
+            })
+        )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
-        drop table grupo_usuarios
-        `)
+       
 
     }
 
