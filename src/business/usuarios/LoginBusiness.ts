@@ -15,6 +15,7 @@ export  default class LoginBusiness {
 
             const getUsuario = await buscarUsuarioRepository(usuario.nomeUsuario)
 
+console.log(getUsuario)
 
             if ((!getUsuario?.nomeUsuario) || (getUsuario?.senha != usuario.senha)) {
                 return ({message: "Usuario  ou senha incorreto!"})

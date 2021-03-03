@@ -1,11 +1,10 @@
 import {
     BaseEntity,
     Column,
-    CreateDateColumn,
     Entity,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+
 } from "typeorm";
 import { Usuarios } from "./Usuarios";
 

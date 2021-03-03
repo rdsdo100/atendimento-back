@@ -31,7 +31,7 @@ export class Usuarios extends BaseEntity {
     @Column()
     bloqueado: boolean;
 
-    @ManyToOne(() => GrupoUsuarios, (grupoUsuarios) => grupoUsuarios.usuarios)
+    @ManyToOne(() => GrupoUsuarios, (grupoUsuarios) => grupoUsuarios.usuarios )
     @JoinColumn([{ name: 'grupo_usuarios_id_fk', referencedColumnName: 'id' }])
     grupoUsuariosIdFK: GrupoUsuarios;
 

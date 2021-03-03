@@ -1,4 +1,4 @@
-import {getManager } from 'typeorm';
+import {createQueryBuilder, getManager} from 'typeorm';
 import { Usuarios } from '../entity/Usuarios';
 
 
@@ -6,7 +6,17 @@ const buscarUsuarioRepository = async (nomeUsuario: string) => {
 
 
     const usuarioRepository = getManager();
+
     return usuarioRepository.findOne(Usuarios, { nomeUsuario: nomeUsuario });
+
+
+
+   /* const  user = await createQueryBuilder('Usuarios')
+        .leftJoinAndSelect('Usuarios.grupoUsuariosIdFK' , 'usuarios')
+
+        .getOne()*/
+
+
 };
 
 const buscarUsuarioIdRepository = async (idUsuario: number) => {
