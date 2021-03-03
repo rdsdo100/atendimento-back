@@ -13,21 +13,18 @@ export  default class LoginBusiness {
 
         try {
 
-            const getUsuario = await buscarUsuarioRepository(usuario.nomeUsuario)
+        let getUsuario:any
 
-console.log(getUsuario)
+        getUsuario = await buscarUsuarioRepository(usuario.nomeUsuario)
 
             if ((!getUsuario?.nomeUsuario) || (getUsuario?.senha != usuario.senha)) {
                 return ({message: "Usuario  ou senha incorreto!"})
 
             }else {
 
-                console.log(String(getUsuario.grupoUsuariosIdFK))
-
                 const authorization = await assinar(Number(getUsuario.id),
-                    String(getUsuario.nomeUsuario))
-
-
+                    String(getUsuario.nomeUsuario), Number(getUsuario.grupoUsuariosIdFK.id)
+                )
 
                 return {
                     id: getUsuario.id,

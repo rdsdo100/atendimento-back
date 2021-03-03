@@ -2,11 +2,11 @@ import {NextFunction, Request, Response} from "express";
 import jwt from 'jsonwebtoken'
 
 
-   export function assinar (id:number , nomeUsuario:string  ){
+   export function assinar (id:number , nomeUsuario:string , grupoUsuario: number   ){
 
 
         const token = jwt.sign(
-            {id, nomeUsuario} ,
+            {id, nomeUsuario , grupoUsuario} ,
             String(process.env.JWT_TOKEN)  ,
             {expiresIn: '1d'})
       return token

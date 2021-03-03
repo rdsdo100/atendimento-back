@@ -4,17 +4,12 @@ import { Usuarios } from '../entity/Usuarios';
 
 const buscarUsuarioRepository = async (nomeUsuario: string) => {
 
-
-    const usuarioRepository = getManager();
-
-    return usuarioRepository.findOne(Usuarios, { nomeUsuario: nomeUsuario });
-
-
-
-   /* const  user = await createQueryBuilder('Usuarios')
+   const  user = await createQueryBuilder('Usuarios')
         .leftJoinAndSelect('Usuarios.grupoUsuariosIdFK' , 'usuarios')
+        .where('nome_usuario = :nome' , {nome : nomeUsuario})
+        .getOne()
 
-        .getOne()*/
+    return user
 
 
 };
