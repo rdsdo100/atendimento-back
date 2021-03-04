@@ -10,6 +10,9 @@ export class Empresas extends BaseEntity {
     @Column({ name: 'codigo_empresa', length: 50 })
     codigoEmpresa: string;
 
+    @Column({  name: 'nome_empresa',  type: 'varchar', nullable: false, unique: true,})
+    nomeEmpresa: string
+
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFK)
     atendimentos: Atendimentos[];
 }

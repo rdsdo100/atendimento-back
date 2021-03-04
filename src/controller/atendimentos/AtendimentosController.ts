@@ -10,7 +10,7 @@ export default  class AtendimentosController {
     async buscarAtendimentoUsuarios(request: Request , response: Response) {
 
         const atendimentosBusiness = new AtendimentosBusiness()
-        const retornoBuscaAtendimento = await atendimentosBusiness.buscaratendimentosUsuarios(4)
+        const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(4)
         return response.status(200).json(retornoBuscaAtendimento)
 
 

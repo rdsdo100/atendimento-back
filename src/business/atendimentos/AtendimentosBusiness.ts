@@ -12,7 +12,7 @@ export default  class AtendimentosBusiness {
     }
 
 
-    async buscaratendimentosUsuarios(idUsuario: number){
+    async buscarAtendimentosUsuarios(idUsuario: number){
 
         const retornoListAtendimentos = await buscarAtendimentoUsuarioRepository(idUsuario)
         return retornoListAtendimentos
