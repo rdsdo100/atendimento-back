@@ -1,11 +1,22 @@
-import {getManager} from 'typeorm';
+import {createQueryBuilder, getManager} from 'typeorm';
 import { Usuarios } from '../entity/Usuarios';
 import {Atendimentos} from "../entity/Atendimentos";
 
 
 
 
-const buscarAtendimentoUsuarioRepository = async (idUsuario: number) => {
+const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<any> => {
+
+    let retornoAtendimento : any
+
+    retornoAtendimento = await createQueryBuilder("Atendimentos" )
+        .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
+        .leftJoinAndSelect('Atendimentos.usuariosIdFK' , 'usuarioId')
+        .where('usuarioId.id = :id and Atendimentos.dataAtendimento = :data' , {id: idUsuario, data: new Date()} )
+        .getMany()
+
+    return retornoAtendimento
+
 
 };
 
@@ -23,16 +34,21 @@ const listAtendimentosRepository = async () => {
     return usuarioRepository.find(Usuarios);
 };
 
-const updateAtendimentosRepository = async (usuarios: Usuarios) => {
+const updateAtendimentosRepository = async () => {
     const usuarioRepository = getManager();
 };
 
-const deleteIdRepository = async (idUsuario: number) => {};
+const deleteIdRepository = async (idAtendimento: number) => {};
 
 
 
 
 export {
 
-    insertAtendimentoRepository
+    insertAtendimentoRepository,
+    buscarAtendimentoUsuarioRepository,
+    listAtendimentosRepository,
+    updateAtendimentosRepository,
+    deleteIdRepository
+
 };
