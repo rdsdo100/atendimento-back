@@ -21,8 +21,15 @@ export class Atendimentos1614646653281 implements MigrationInterface {
                         type: 'varchar',
                         length: '500',
                         isNullable: false,
-                        isUnique: true,
+
                     },
+                    {
+                        name: 'data_atendimento',
+                        type: 'date',
+                        isNullable: false,
+
+                    },
+
 
                     {
                         name: 'usuarios_id_fk',
