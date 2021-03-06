@@ -13,8 +13,6 @@ export default  class AtendimentosController {
         const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(4)
         return response.status(200).json(retornoBuscaAtendimento)
 
-
-
     }
 
 

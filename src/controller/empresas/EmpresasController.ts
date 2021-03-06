@@ -1,9 +1,11 @@
 import {Request, Response} from "express";
-import {Controller, Get, Post} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
 import EmpresasBusiness from "../../business/empresas/EmpresasBusiness";
 import {Empresas} from "../../entity/Empresas";
+import { decodificar } from "../../config/Jwt";
 
 @Controller('empresa')
+@ClassMiddleware([decodificar])
 export default  class EmpresasController {
 
     @Get()
