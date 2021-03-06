@@ -11,7 +11,7 @@ const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<an
 
     retornoAtendimento = await createQueryBuilder("Atendimentos" )
         .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
-        .leftJoinAndSelect('Atendimentos.usuariosIdFK' , 'usuarioId')
+        .leftJoin('Atendimentos.usuariosIdFK' , 'usuarioId')
         .where('usuarioId.id = :id and Atendimentos.dataAtendimento = :data' , {id: idUsuario, data: new Date()} )
         .getMany()
 
