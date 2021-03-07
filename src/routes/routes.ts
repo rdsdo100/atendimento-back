@@ -8,17 +8,17 @@ import EmpresasController from '../controller/empresas/EmpresasController';
 
 const inicio = new Inicio()
 const usuario = new UsuaruiosController()
-const grupoUsusarios = new GurpoUsuarioController()
 const login = new LoginController()
 const atendimento = new AtendimentosController()
 const empresa = new EmpresasController()
+const gurpoUsuario = new GurpoUsuarioController()
 
 
 export const routes = [
     inicio,
     usuario,
     login,
-    grupoUsusarios,
+    gurpoUsuario,
     atendimento,
     empresa
 

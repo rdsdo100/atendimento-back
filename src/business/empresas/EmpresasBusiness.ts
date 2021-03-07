@@ -1,6 +1,6 @@
 
 import {Atendimentos} from "../../entity/Atendimentos";
-import {buscarAtendimentoUsuarioRepository, insertAtendimentoRepository} from "../../repository/AtendimentosRepository";
+import {buscarAtendimentoUsuarioRepository, insertAtendimentoRepository} from "../../repository/atendimentosRepository";
 import {insertEmpresasRepository, listEmpresasRepository} from "../../repository/EmpresasRepository";
 import {Empresas} from "../../entity/Empresas";
 

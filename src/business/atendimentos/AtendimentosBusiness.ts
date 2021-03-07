@@ -1,6 +1,6 @@
 
 import {Atendimentos} from "../../entity/Atendimentos";
-import {buscarAtendimentoUsuarioRepository, insertAtendimentoRepository} from "../../repository/AtendimentosRepository";
+import {buscarAtendimentoUsuarioRepository, insertAtendimentoRepository} from "../../repository/atendimentosRepository";
 
 export default  class AtendimentosBusiness {
 

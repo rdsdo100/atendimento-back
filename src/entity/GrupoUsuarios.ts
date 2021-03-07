@@ -10,6 +10,7 @@ import { Usuarios } from "./Usuarios";
 
 @Entity({name: 'grupo_usuarios'})
 export class GrupoUsuarios extends BaseEntity {
+    
     @PrimaryGeneratedColumn()
     id: number
 

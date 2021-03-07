@@ -1,12 +1,14 @@
-import {Controller, Delete, Post} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Delete, Post} from "@overnightjs/core";
 import { getRepository } from "typeorm";
 import { Usuarios } from "../../entity/Usuarios";
 import {Request , Response} from 'express'
 import {GrupoUsuarios} from "../../entity/GrupoUsuarios";
 import UsuariosBusiness from "../../business/usuarios/UsuariosBusiness";
+import { decodificar } from "../../config/Jwt";
 
 
 @Controller('user')
+@ClassMiddleware([decodificar])
 export default class UsuaruiosController {
 
     @Post()
