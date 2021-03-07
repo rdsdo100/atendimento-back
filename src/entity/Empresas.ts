@@ -7,10 +7,10 @@ export class Empresas extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ name: 'codigo_empresa', length: 50 })
+    @Column({ name: 'codigo_empresa', length: 10 , unique: false })
     codigoEmpresa: string;
 
-    @Column({  name: 'nome_empresa',  type: 'varchar', nullable: false, unique: true,})
+    @Column({  name: 'nome_empresa',  length: 250 , type: 'varchar', nullable: false, unique: false})
     nomeEmpresa: string
 
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFK)

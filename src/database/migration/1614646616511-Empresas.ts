@@ -21,15 +21,15 @@ export class Empresas1614646616511 implements MigrationInterface {
                         type: 'varchar',
                         length: '10',
                         isNullable: false,
-                        isUnique: true,
+                        isUnique: false,
                     },
 
                     {
                         name: 'nome_empresa',
                         type: 'varchar',
-                        length: '50',
+                        length: '250',
                         isNullable: false,
-                        isUnique: true,
+                        isUnique: false,
                     },
                 ]
                 
