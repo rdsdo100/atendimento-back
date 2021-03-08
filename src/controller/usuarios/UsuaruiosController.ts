@@ -6,7 +6,6 @@ import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
 import UsuariosBusiness from "../../business/usuarios/UsuariosBusiness";
 import { decodificar } from "../../config/Jwt";
 
-
 @Controller('user')
 @ClassMiddleware([decodificar])
 export default class UsuaruiosController {
@@ -25,7 +24,6 @@ export default class UsuaruiosController {
         grupoUsuaruios.id = Number(request.body.grupoUsuario)
         usuarios.grupoUsuariosIdFK = grupoUsuaruios
 
-        console.log(usuarios)
         const retornoUsuario = await usuariosBusiness.cadastroUsuariosBuisiness(usuarios)
 
         return response.status(200).json(retornoUsuario)
