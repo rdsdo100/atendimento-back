@@ -54,7 +54,7 @@ columns:[
     {
         name: 'bloqueado',
         type: 'boolean',
-        default: true,
+        default: false,
     },  
     {
         name: 'grupo_usuarios_id_fk',

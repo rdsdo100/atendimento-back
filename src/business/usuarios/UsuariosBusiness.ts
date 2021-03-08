@@ -1,15 +1,16 @@
 import {Request, Response} from "express";
 import {Usuarios} from "../../entity/Usuarios";
 import {getRepository} from "typeorm";
+import { insertUsuarioRpository } from "../../repository/usuarioRepository";
 
 export default  class UsuariosBusiness{
 
-    async cadastroUsuariosBuisiness(usuarios : Usuarios){
+    async cadastroUsuariosBuisiness(usuario : Usuarios){
 
-        const setUsuarios = getRepository(Usuarios)
+      
 
         try {
-            const resposta = await setUsuarios.save(usuarios)
+            const resposta = await insertUsuarioRpository(usuario)
             return   resposta
         } catch (err) {
             return   {

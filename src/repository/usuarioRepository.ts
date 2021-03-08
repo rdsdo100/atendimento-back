@@ -2,6 +2,13 @@ import {createQueryBuilder, getManager} from 'typeorm';
 import { Usuarios } from '../entity/Usuarios';
 
 
+const insertUsuarioRpository = async(usuario: Usuarios) => {
+
+    const usuarioRepository = getManager();
+    return usuarioRepository.save(Usuarios, usuario);
+
+}
+
 const buscarUsuarioRepository = async (nomeUsuario: string) => {
 
    const  user = await createQueryBuilder('Usuarios')
@@ -44,5 +51,5 @@ export {
     updateUsuarioRepository,
     deleteUsuarioIdRepository,
     buscarUsuariosRepository,
-
+    insertUsuarioRpository
 };
