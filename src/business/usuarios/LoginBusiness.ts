@@ -23,7 +23,8 @@ export  default class LoginBusiness {
             }else {
 
                 const authorization = await assinar(Number(getUsuario.id),
-                    String(getUsuario.nomeUsuario), Number(getUsuario.grupoUsuariosIdFK.id)
+                    String(getUsuario.nomeUsuario), 
+                    Number(getUsuario.grupoUsuariosIdFK.id)
                 )
 
                 return {
@@ -32,6 +33,7 @@ export  default class LoginBusiness {
                     authorization
                 }
             }
+            
 
         } catch (error) {
 

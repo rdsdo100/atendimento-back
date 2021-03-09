@@ -12,9 +12,9 @@ export default class AtendimentosController {
 
     @Get()
     async buscarAtendimentoUsuarios(request: Request, response: Response) {
-
+const  usuarioId = Number(request.body.decoded.id)
         const atendimentosBusiness = new AtendimentosBusiness()
-        const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(1)
+        const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(usuarioId)
         return response.status(200).json(retornoBuscaAtendimento)
 
     }
@@ -32,7 +32,7 @@ export default class AtendimentosController {
         atendimento.dataAtendimento = new Date()
         atendimento.usuariosIdFK = usuario
         atendimento.empresasIdFK = empresa
-        console.log(atendimento)
+        
 
         const atendimentoSalvo = await atendimentosBusiness.cadastrarAtendimentos(atendimento)
 

@@ -2,9 +2,6 @@ import {createQueryBuilder, getManager} from 'typeorm';
 import { Usuarios } from '../entity/Usuarios';
 import {Atendimentos} from "../entity/Atendimentos";
 
-
-
-
 const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<any> => {
 
     let retornoAtendimento : any
