@@ -1,5 +1,4 @@
 import {createQueryBuilder, getManager} from 'typeorm';
-import { Usuarios } from '../entity/Usuarios';
 import {Atendimentos} from "../entity/Atendimentos";
 
 const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<any> => {
@@ -17,6 +16,24 @@ const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<an
 
 };
 
+
+
+const buscarAtendimentoIdRepository = async (id: number): Promise<any> => {
+
+    let retornoAtendimento: any
+    
+    retornoAtendimento = await createQueryBuilder("Atendimentos" )
+    .leftJoin('Atendimentos.empresasIdFK' , 'empresaId')
+    .leftJoinAndSelect('Atendimentos.usuariosIdFK' , 'usuarioId')
+    .where('Atendimentos.id = :id' , {id: id} )
+    .getOne()
+
+   delete retornoAtendimento.usuariosIdFK.senha
+ 
+    return retornoAtendimento
+
+};
+
 const insertAtendimentoRepository = async (atendimento: Atendimentos)=>{
 
     const insertAtendimento = getManager()
@@ -26,16 +43,18 @@ const insertAtendimentoRepository = async (atendimento: Atendimentos)=>{
 
 }
 
-const listAtendimentosRepository = async () => {
-    const usuarioRepository = getManager();
-    return usuarioRepository.find(Usuarios);
-};
+
 
 const updateAtendimentosRepository = async () => {
-    const usuarioRepository = getManager();
+    const AtendimentoRepository = getManager();
 };
 
-const deleteIdRepository = async (idAtendimento: number) => {};
+const deleteIdAtendimentoRepository = async (idAtendimento: number) => {
+    const AtendimentoRepository = getManager();
+   await AtendimentoRepository.delete(Atendimentos , {id: idAtendimento})
+
+
+};
 
 
 
@@ -44,8 +63,8 @@ export {
 
     insertAtendimentoRepository,
     buscarAtendimentoUsuarioRepository,
-    listAtendimentosRepository,
+    buscarAtendimentoIdRepository,
     updateAtendimentosRepository,
-    deleteIdRepository
+    deleteIdAtendimentoRepository
 
 };

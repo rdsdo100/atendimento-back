@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ClassMiddleware, Controller, Get, Post } from "@overnightjs/core";
+import { ClassMiddleware, Controller, Get, Post, Delete } from "@overnightjs/core";
 import { Atendimentos } from "../../entity/Atendimentos";
 import AtendimentosBusiness from "../../business/atendimentos/AtendimentosBusiness";
 import { Empresas } from "../../entity/Empresas";
@@ -38,4 +38,16 @@ const  usuarioId = Number(request.body.decoded.id)
 
         return response.status(200).json(atendimentoSalvo)
     }
+
+ @Delete(":id")
+    async deletarAtendimento(request: Request, response: Response){
+        const  usuarioId = Number(request.body.decoded.id)
+        const deletar = Number(request.params.id)
+        let message: string = ''
+        const atendimentoBusiness = new AtendimentosBusiness()
+       message = await atendimentoBusiness.deletarAtendimentos(deletar , usuarioId)
+    
+        response.json({message})
+    }
+
 }
