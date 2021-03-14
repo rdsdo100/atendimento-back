@@ -1,6 +1,6 @@
 
 import { Atendimentos } from "../../entity/Atendimentos";
-import { insertAtendimentoRepository, buscarAtendimentoUsuarioRepository, deleteIdAtendimentoRepository, buscarAtendimentoIdRepository } from "../../repository/atendimentosRepository";
+import { insertAtendimentoRepository, buscarAtendimentoUsuarioRepository, deleteIdAtendimentoRepository, buscarAtendimentoIdRepository, updateAtendimentosRepository } from "../../repository/atendimentosRepository";
 
 
 export default class AtendimentosBusiness {
@@ -10,6 +10,12 @@ export default class AtendimentosBusiness {
 
         const atendimentoSalvo = await insertAtendimentoRepository(atendimento)
         return atendimentoSalvo
+    }
+
+    async updateAtendimentos(atendimento: Atendimentos): Promise<any> {
+
+        const atendimentoUpdate = await updateAtendimentosRepository(atendimento)
+        return atendimentoUpdate
     }
 
 

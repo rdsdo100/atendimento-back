@@ -17,7 +17,6 @@ const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<an
 };
 
 
-
 const buscarAtendimentoIdRepository = async (id: number): Promise<any> => {
 
     let retornoAtendimento: any
@@ -43,10 +42,10 @@ const insertAtendimentoRepository = async (atendimento: Atendimentos)=>{
 
 }
 
-
-
-const updateAtendimentosRepository = async () => {
-    const AtendimentoRepository = getManager();
+const updateAtendimentosRepository = async (atendimento : Atendimentos) => {
+    const atendimentoRepositoy = getManager();
+    const updateAtendimento = atendimentoRepositoy.update( Atendimentos , atendimento.id, atendimento)
+    return updateAtendimento
 };
 
 const deleteIdAtendimentoRepository = async (idAtendimento: number) => {

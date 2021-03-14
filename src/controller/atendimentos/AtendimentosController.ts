@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ClassMiddleware, Controller, Get, Post, Delete } from "@overnightjs/core";
+import { ClassMiddleware, Controller, Get, Post, Delete, Put } from "@overnightjs/core";
 import { Atendimentos } from "../../entity/Atendimentos";
 import AtendimentosBusiness from "../../business/atendimentos/AtendimentosBusiness";
 import { Empresas } from "../../entity/Empresas";
@@ -49,5 +49,17 @@ const  usuarioId = Number(request.body.decoded.id)
     
         response.json({message})
     }
+    @Put()
+    async updadeAtendimentos(request: Request, response: Response) {
+        const atendimento = new Atendimentos()
+        const atendimentosBusiness = new AtendimentosBusiness()
+
+        atendimento.id = Number(request.body.id)
+        atendimento.descricaoAtendimento = String(request.body.descricaoAtendimento)
+        const atendimentoUpdate = await atendimentosBusiness.cadastrarAtendimentos(atendimento)
+
+        return response.status(200).json(atendimentoUpdate)
+    }
+
 
 }
