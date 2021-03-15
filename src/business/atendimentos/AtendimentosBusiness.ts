@@ -28,6 +28,7 @@ export default class AtendimentosBusiness {
                 id: atendimento.id,
                 descricaoAtendimento: atendimento.descricaoAtendimento,
                 dataAtendimento: atendimento.dataAtendimento,
+                idEmpresa: atendimento.empresasIdFK.id,
                 cogigoEmpresa: atendimento.empresasIdFK.codigoEmpresa,
                 nomeEmpresa: atendimento.empresasIdFK.nomeEmpresa
             }
