@@ -8,7 +8,7 @@ module.exports = {
       process.env.TYPEORM_ENTITIES
    ],
 
-   ssl: process.env.TYPEORM_SSL,
+   ssl: true,
    
   extra: {
      ssl: {
