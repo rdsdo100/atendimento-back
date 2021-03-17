@@ -1,4 +1,14 @@
 
+
+const ssl = process.env.TYPEORM_SSL === "true" ? true : false
+const sslExtra = process.env.TYPEORM_SSL === "true" ? {
+   ssl: {
+    rejectUnauthorized: false
+   }
+ } : {}
+
+
+
 module.exports = {
    type: process.env.TYPEORM_SCHEMA ,
    url: process.env.DATABASE_URL,
@@ -9,13 +19,9 @@ module.exports = {
    ],
 
 
-   ssl: true,
-   
-  extra: {
-     ssl: {
-      rejectUnauthorized: false
-     }
-   },
+   ssl:  ssl,
+ 
+  extra: sslExtra,
    
    migrations: [
       process.env.TYPEORM_MIGRATIONS
