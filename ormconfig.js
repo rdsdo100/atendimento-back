@@ -8,7 +8,15 @@ module.exports = {
       process.env.TYPEORM_ENTITIES
    ],
 
-  
+
+   ssl: true,
+   
+  extra: {
+     ssl: {
+      rejectUnauthorized: false
+     }
+   },
+   
    migrations: [
       process.env.TYPEORM_MIGRATIONS
          ],
