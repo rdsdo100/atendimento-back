@@ -9,7 +9,13 @@ module.exports = {
    ],
 
 
- 
+   ssl: true,
+   
+  extra: {
+     ssl: {
+      rejectUnauthorized: false
+     }
+   },
    
    migrations: [
       process.env.TYPEORM_MIGRATIONS
