@@ -39,6 +39,17 @@ const buscarUsuarioIdRepository = async (idUsuario: number) => {
     return usuarioRepository.findOne(Usuarios, idUsuario);
 };
 
+
+const buscarUsuarioGrupoUsuarioId = async (idUsuario: number) =>{
+    
+    const  user = await createQueryBuilder('Usuarios')
+    .leftJoinAndSelect('Usuarios.grupoUsuariosIdFK' , 'grupoUsuarios')
+    .where('Usuarios.id = :id' , {id : idUsuario })
+    .getOne()
+
+return user
+}
+
 const listUsuarioRepository = async () => {
     const usuarioRepository = getManager();
     return usuarioRepository.find(Usuarios);
@@ -77,5 +88,6 @@ export {
     deleteUsuarioIdRepository,
     buscarUsuariosRepository,
     insertUsuarioRpository,
-    buscarUsuarioRepositoryAll
+    buscarUsuarioRepositoryAll,
+    buscarUsuarioGrupoUsuarioId
 };

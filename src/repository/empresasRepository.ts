@@ -6,6 +6,21 @@ const updateEmpresaRpository = async (empresa : Empresas)=>{
 
 }
 
+const deleteIdEmpresaRpository = async (idEmpresa : number)=>{
+
+    const empresaRepository = getManager();
+
+    try{
+
+        return await empresaRepository.delete(Empresas , idEmpresa);
+    }catch(e){
+
+    }
+
+
+}
+
+
 const listEmpresasRepository = async (): Promise<any> => {
     const usuarioRepository = getManager();
     return usuarioRepository.find(Empresas);
@@ -39,6 +54,7 @@ export {
 listEmpresasRepository,
 updateEmpresaRpository,
     insertEmpresasRepository,
-    buscarEmpresaIdRepository
+    buscarEmpresaIdRepository,
+    deleteIdEmpresaRpository
 
 };

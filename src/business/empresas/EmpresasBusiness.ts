@@ -1,6 +1,14 @@
-import { buscarEmpresaIdRepository, insertEmpresasRepository, listEmpresasRepository, updateEmpresaRpository } from "../../repository/empresasRepository";
+import {
+    buscarEmpresaIdRepository,
+    deleteIdEmpresaRpository,
+    insertEmpresasRepository,
+    listEmpresasRepository,
+    updateEmpresaRpository
+} from "../../repository/empresasRepository";
 import { Empresas } from "../../entity/Empresas";
-import { buscarUsuarioIdRepository, buscarUsuarioRepository, deleteUsuarioIdRepository } from "../../repository/usuarioRepository";
+import { buscarUsuarioGrupoUsuarioId } from "../../repository/usuarioRepository";
+import { Usuarios } from "../../entity/Usuarios";
+import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
 
 export default class EmpresasBusiness {
 
@@ -25,32 +33,43 @@ export default class EmpresasBusiness {
     async updateEmpresa(empresa: Empresas): Promise<any> {
 
 
-        
+
         const empresaUpdate = await updateEmpresaRpository(empresa)
         return empresaUpdate
-       
+
     }
 
 
 
     async deletarAtendimentos(idEmpresa: number, idUsuario: number) {
+        const empresaDelete = new Empresas()
+        const usuariosDelete = new Usuarios()
+        const grupoUsuariosDelete = new GrupoUsuarios()
         const empresa: any = await buscarEmpresaIdRepository(idEmpresa)
-       // const usuarios: any = await buscarUsuarioIdRepository(idUsuario)
+        const usuarios: any = await buscarUsuarioGrupoUsuarioId(idUsuario)
 
+        empresaDelete.id = empresa.id
+       // usuariosDelete.id = usuarios.id
+      //  grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
+      //  usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
 
+console.log(usuarios )
 
-     // if(usuarios?.grupoUsuariosIdFK.id <= 2){
-       
-     //   if(empresa.id == idEmpresa){
-         //  await deleteUsuarioIdRepository(idEmpresa)
-          console.log(empresa)
-            return 'Empresa Deletada!'
-       // }else{
-       //     return `Empresa ${idEmpresa}, não deletada!`
-       // }
-   // }else{
-  //      return "Não permitido!"
-  //  }
-        
+        if (grupoUsuariosDelete.id <= 2) {
+
+            if (empresaDelete.id === idEmpresa) {
+               
+             //   await deleteIdEmpresaRpository(idEmpresa)
+
+                return 'Empresa Deletada!'
+            } else {
+                return `Empresa ${idEmpresa}, não deletada!`
+            }
+        } else {
+
+            return "Não permitido!"
+
+        }
+
     }
 }
