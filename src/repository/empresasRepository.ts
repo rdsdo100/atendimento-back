@@ -2,7 +2,9 @@ import {getManager} from 'typeorm';
 import {Empresas} from "../entity/Empresas";
 
 
+const updateEmpresaRpository = async (empresa : Empresas)=>{
 
+}
 
 const listEmpresasRepository = async (): Promise<any> => {
     const usuarioRepository = getManager();
@@ -11,9 +13,6 @@ const listEmpresasRepository = async (): Promise<any> => {
 };
 
 const insertEmpresasRepository = async (empresa: Empresas)=>{
-
-
-    
     const insertEmpresa = getManager()
 
     try{
@@ -24,9 +23,19 @@ const insertEmpresasRepository = async (empresa: Empresas)=>{
     }
 
 }
+
+
+const buscarEmpresaIdRepository = async (idEmpresa: number): Promise<any> => {
+    const empresaRepository = getManager();
+    return empresaRepository.findOne(Empresas , {id: idEmpresa});
+
+};
+
 export {
 
 listEmpresasRepository,
-    insertEmpresasRepository
+updateEmpresaRpository,
+    insertEmpresasRepository,
+    buscarEmpresaIdRepository
 
 };
