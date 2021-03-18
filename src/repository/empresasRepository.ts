@@ -1,6 +1,4 @@
-import {createQueryBuilder, getManager} from 'typeorm';
-import { Usuarios } from '../entity/Usuarios';
-import {Atendimentos} from "../entity/Atendimentos";
+import {getManager} from 'typeorm';
 import {Empresas} from "../entity/Empresas";
 
 
@@ -12,12 +10,18 @@ const listEmpresasRepository = async (): Promise<any> => {
 
 };
 
-const insertEmpresasRepository = async (empresas: Empresas)=>{
+const insertEmpresasRepository = async (empresa: Empresas)=>{
 
-    const insertAtendimento = getManager()
 
-    const atendimentosalvo = await insertAtendimento.save(Empresas , empresas)
-    return atendimentosalvo
+    
+    const insertEmpresa = getManager()
+
+    try{
+    const empresaSalvo = await insertEmpresa.save(Empresas , empresa)
+   return empresaSalvo
+    } catch(e){
+        return e
+    }
 
 }
 export {
