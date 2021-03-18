@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Delete, Get, Post, Put} from "@overnightjs/core";
 import EmpresasBusiness from "../../business/empresas/EmpresasBusiness";
 import {Empresas} from "../../entity/Empresas";
 import { decodificar } from "../../config/Jwt";
@@ -29,4 +29,27 @@ export default  class EmpresasController {
         return response.status(200).json(retornoinsertEmpresa)
 
     }
+    @Delete(":id")
+    async deletarAtendimento(request: Request, response: Response) {
+        const usuarioId = Number(request.body.decoded.id)
+        const deletar = Number(request.params.id)
+        let message: string = ''
+        const empresasBusiness = new EmpresasBusiness()
+       // message = await empresasBusiness.deletarAtendimentos(deletar, usuarioId)
+
+        //response.json({ message })
+    }
+    @Put()
+    async updadeAtendimentos({ request, response }: { request: Request; response: Response; }) {
+        const empresa = new Empresas()
+        const empresasBusiness = new EmpresasBusiness()
+
+        empresa.id = Number(request.body.id)
+        empresa.codigoEmpresa = String(request.body.codigoEmpresa)
+        empresa.nomeEmpresa = String(request.body.nomeEmpresa)
+      //  const atendimentoUpdate = await atendimentosBusiness.cadastrarAtendimentos(atendimento)
+
+       // return response.status(200).json(atendimentoUpdate)
+    }
+
 }

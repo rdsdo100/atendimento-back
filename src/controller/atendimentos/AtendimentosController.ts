@@ -12,7 +12,7 @@ export default class AtendimentosController {
 
     @Get()
     async buscarAtendimentoUsuarios(request: Request, response: Response) {
-const  usuarioId = Number(request.body.decoded.id)
+        const usuarioId = Number(request.body.decoded.id)
         const atendimentosBusiness = new AtendimentosBusiness()
         const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(usuarioId)
         return response.status(200).json(retornoBuscaAtendimento)
@@ -32,22 +32,21 @@ const  usuarioId = Number(request.body.decoded.id)
         atendimento.dataAtendimento = new Date()
         atendimento.usuariosIdFK = usuario
         atendimento.empresasIdFK = empresa
-        
 
         const atendimentoSalvo = await atendimentosBusiness.cadastrarAtendimentos(atendimento)
 
         return response.status(200).json(atendimentoSalvo)
     }
 
- @Delete(":id")
-    async deletarAtendimento(request: Request, response: Response){
-        const  usuarioId = Number(request.body.decoded.id)
+    @Delete(":id")
+    async deletarAtendimento(request: Request, response: Response) {
+        const usuarioId = Number(request.body.decoded.id)
         const deletar = Number(request.params.id)
         let message: string = ''
         const atendimentoBusiness = new AtendimentosBusiness()
-       message = await atendimentoBusiness.deletarAtendimentos(deletar , usuarioId)
-    
-        response.json({message})
+        message = await atendimentoBusiness.deletarAtendimentos(deletar, usuarioId)
+
+        response.json({ message })
     }
     @Put()
     async updadeAtendimentos(request: Request, response: Response) {
@@ -56,7 +55,7 @@ const  usuarioId = Number(request.body.decoded.id)
 
         atendimento.id = Number(request.body.id)
         atendimento.descricaoAtendimento = String(request.body.descricaoAtendimento)
-        const atendimentoUpdate = await atendimentosBusiness.cadastrarAtendimentos(atendimento)
+        const atendimentoUpdate = await atendimentosBusiness.updateAtendimentos(atendimento)
 
         return response.status(200).json(atendimentoUpdate)
     }
