@@ -35,9 +35,9 @@ export default  class EmpresasController {
         const deletar = Number(request.params.id)
         let message: string = ''
         const empresasBusiness = new EmpresasBusiness()
-       // message = await empresasBusiness.deletarAtendimentos(deletar, usuarioId)
+        message = await empresasBusiness.deletarAtendimentos(deletar, usuarioId)
 
-        //response.json({ message })
+        response.json({ message })
     }
     @Put()
     async updadeAtendimentos({ request, response }: { request: Request; response: Response; }) {

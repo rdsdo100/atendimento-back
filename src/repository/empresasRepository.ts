@@ -27,8 +27,11 @@ const insertEmpresasRepository = async (empresa: Empresas)=>{
 
 const buscarEmpresaIdRepository = async (idEmpresa: number): Promise<any> => {
     const empresaRepository = getManager();
+    try{
     return empresaRepository.findOne(Empresas , {id: idEmpresa});
-
+} catch(e){
+    return e
+}
 };
 
 export {

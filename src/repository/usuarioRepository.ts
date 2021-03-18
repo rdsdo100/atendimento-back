@@ -34,6 +34,7 @@ const buscarUsuarioRepositoryAll = async () => {
  };
 
 const buscarUsuarioIdRepository = async (idUsuario: number) => {
+   
     const usuarioRepository = getManager();
     return usuarioRepository.findOne(Usuarios, idUsuario);
 };
@@ -47,7 +48,19 @@ const updateUsuarioRepository = async (usuarios: Usuarios) => {
     const usuarioRepository = getManager();
 };
 
-const deleteUsuarioIdRepository = async (idUsuario: number) => {};
+const deleteUsuarioIdRepository = async (idUsuario: number) => {
+   
+    const usuarioRepository = getManager();
+
+    try{
+
+        return usuarioRepository.delete(Usuarios , idUsuario);
+    }catch(e){
+
+    }
+
+
+};
 
 const buscarUsuariosRepository = async () => {
     const usuarioRepository = getManager();
