@@ -6,12 +6,13 @@ import AtendimentosController from "../controller/atendimentos/AtendimentosContr
 import EmpresasController from '../controller/empresas/EmpresasController';
 
 
+
 const inicio = new Inicio()
 const usuario = new UsuaruiosController()
 const login = new LoginController()
 const atendimento = new AtendimentosController()
-const empresa = new EmpresasController()
 const gurpoUsuario = new GurpoUsuarioController()
+const empresa = new EmpresasController()
 
 
 export const routes = [
@@ -21,5 +22,6 @@ export const routes = [
     gurpoUsuario,
     atendimento,
     empresa
+    
 
 ]
