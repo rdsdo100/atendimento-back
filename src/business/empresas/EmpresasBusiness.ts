@@ -49,17 +49,17 @@ export default class EmpresasBusiness {
         const usuarios: any = await buscarUsuarioGrupoUsuarioId(idUsuario)
 
         empresaDelete.id = empresa.id
-       // usuariosDelete.id = usuarios.id
-      //  grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
-      //  usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
+        usuariosDelete.id = usuarios.id
+        grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
+        usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
 
-console.log(usuarios )
+
 
         if (grupoUsuariosDelete.id <= 2) {
 
             if (empresaDelete.id === idEmpresa) {
                
-             //   await deleteIdEmpresaRpository(idEmpresa)
+                await deleteIdEmpresaRpository(idEmpresa)
 
                 return 'Empresa Deletada!'
             } else {
