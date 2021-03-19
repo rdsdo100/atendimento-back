@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { Usuarios } from "../../entity/Usuarios";
 import { getRepository } from "typeorm";
-import { buscarUsuarioRepositoryAll, insertUsuarioRpository } from "../../repository/usuarioRepository";
+import { buscarUsuarioGrupoUsuarioId, buscarUsuarioRepositoryAll, deleteUsuarioIdRepository, insertUsuarioRpository, updateUsuarioRepository } from "../../repository/usuarioRepository";
+import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
 
 export default class UsuariosBusiness {
 
@@ -56,18 +57,47 @@ export default class UsuariosBusiness {
 
     }
 
-    async deletarUsuario(request: Request, response: Response) {
-        const deletar = Number(request.params.id)
+   
 
-        const setUsuarios = getRepository(Usuarios)
 
-        const resposta = await setUsuarios.findOne({
-            where: {
-                id: deletar
-            }
-        })
-        response.json(resposta)
+
+    
+    async updateUsuariO(usuario: Usuarios ): Promise<any> {
+
+        const usuarioUpdate = await updateUsuarioRepository(usuario)
+        return usuarioUpdate
 
     }
+
+
+
+    async deletarUsuario(idUsuarioDelete: number, idUsuario: number) {
+       
+        const usuariosDelete = new Usuarios()
+        const grupoUsuariosDelete = new GrupoUsuarios()
+       
+        const usuarios: any = await buscarUsuarioGrupoUsuarioId(idUsuario)
+
+       
+        usuariosDelete.id = usuarios.id
+        grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
+        usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
+
+
+
+        if (grupoUsuariosDelete.id <= 2) {
+
+          await deleteUsuarioIdRepository(idUsuarioDelete)
+               
+                return 'Usuário Deletado!'
+            } else {
+                return `Usuário ${idUsuarioDelete}, não deletado!`
+            }
+        } 
+
+            
+        
+
+    
 
 }

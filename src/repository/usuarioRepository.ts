@@ -57,6 +57,7 @@ const listUsuarioRepository = async () => {
 
 const updateUsuarioRepository = async (usuarios: Usuarios) => {
     const usuarioRepository = getManager();
+    return await usuarioRepository.update(Usuarios ,usuarios.id , usuarios)
 };
 
 const deleteUsuarioIdRepository = async (idUsuario: number) => {
@@ -65,7 +66,19 @@ const deleteUsuarioIdRepository = async (idUsuario: number) => {
 
     try{
 
-        return usuarioRepository.delete(Usuarios , idUsuario);
+const atendimentoUsuario:any = await createQueryBuilder("Atendimentos" )
+.leftJoin('Atendimentos.empresasIdFK' , 'empresaId')
+.leftJoin('Atendimentos.usuariosIdFK' , 'usuarioId')
+.where('usuarioId.id = :id' , {id: idUsuario} )
+.getOne()
+
+if(!atendimentoUsuario.id){
+    return await usuarioRepository.delete(Usuarios , idUsuario);
+}else{
+    return "Já existe Atendimentos para esse usuario!"
+}
+
+       
     }catch(e){
 
     }

@@ -32,8 +32,6 @@ export default class EmpresasBusiness {
 
     async updateEmpresa(empresa: Empresas): Promise<any> {
 
-
-
         const empresaUpdate = await updateEmpresaRpository(empresa)
         return empresaUpdate
 
