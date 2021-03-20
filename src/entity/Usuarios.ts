@@ -22,9 +22,6 @@ export class Usuarios extends BaseEntity {
     @Column({ length: 30 })
     senha: string;
 
-    @Column({ length: 30 })
-    matricula: string;
-
     @Column()
     ativo: boolean;
 

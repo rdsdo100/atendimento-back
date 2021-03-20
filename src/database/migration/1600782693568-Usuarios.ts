@@ -39,12 +39,7 @@ columns:[
         length: '30',
         isNullable: false,
     },
-    {
-        name: 'matricula',
-        type: 'varchar',
-        length: '30',
-        isNullable: true,
-    },
+    
     {
         name: 'ativo',
         type: 'boolean',

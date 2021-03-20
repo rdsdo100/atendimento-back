@@ -1,6 +1,4 @@
-import { Request, Response } from "express";
 import { Usuarios } from "../../entity/Usuarios";
-import { getRepository } from "typeorm";
 import { buscarUsuarioGrupoUsuarioId, buscarUsuarioRepositoryAll, deleteUsuarioIdRepository, insertUsuarioRpository, updateUsuarioRepository } from "../../repository/usuarioRepository";
 import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
 
@@ -57,19 +55,13 @@ export default class UsuariosBusiness {
 
     }
 
-   
-
-
-
     
-    async updateUsuariO(usuario: Usuarios ): Promise<any> {
+    async updateUsuario(usuario: Usuarios ): Promise<any> {
 
         const usuarioUpdate = await updateUsuarioRepository(usuario)
         return usuarioUpdate
 
     }
-
-
 
     async deletarUsuario(idUsuarioDelete: number, idUsuario: number) {
        
@@ -83,8 +75,6 @@ export default class UsuariosBusiness {
         grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
         usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
 
-
-
         if (grupoUsuariosDelete.id <= 2) {
 
           await deleteUsuarioIdRepository(idUsuarioDelete)
@@ -94,10 +84,5 @@ export default class UsuariosBusiness {
                 return `Usuário ${idUsuarioDelete}, não deletado!`
             }
         } 
-
-            
-        
-
-    
 
 }
