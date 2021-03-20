@@ -42,13 +42,14 @@ export default class EmpresasController {
     }
 
     @Put()
-    async updadeEmpresa({ request, response }: { request: Request; response: Response; }) {
+    async updadeEmpresa(request: Request, response: Response) {
         const empresa = new Empresas()
         const empresasBusiness = new EmpresasBusiness()
 
         empresa.id = Number(request.body.id)
         empresa.codigoEmpresa = String(request.body.codigoEmpresa)
         empresa.nomeEmpresa = String(request.body.nomeEmpresa)
+
         const empresaUpdate = await empresasBusiness.updateEmpresa(empresa)
 
         return response.status(200).json(empresaUpdate)

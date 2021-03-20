@@ -3,6 +3,15 @@ import {Empresas} from "../entity/Empresas";
 
 
 const updateEmpresaRpository = async (empresa : Empresas)=>{
+    const empresaRepository = getManager();
+
+    try{
+
+        return await empresaRepository.update(Empresas , empresa.id , empresa);
+    }catch(e){
+
+    }
+
 
 }
 
