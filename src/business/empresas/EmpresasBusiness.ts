@@ -20,15 +20,11 @@ export default class EmpresasBusiness {
         return empresasSalvo
     }
 
-
     async listarEmpresas() {
 
         const retornoListEmpresas = await listEmpresasRepository()
         return retornoListEmpresas
     }
-
-
-
 
     async updateEmpresa(empresa: Empresas): Promise<any> {
 
@@ -36,8 +32,6 @@ export default class EmpresasBusiness {
         return empresaUpdate
 
     }
-
-
 
     async deletarAtendimentos(idEmpresa: number, idUsuario: number) {
         const empresaDelete = new Empresas()
@@ -50,8 +44,6 @@ export default class EmpresasBusiness {
         usuariosDelete.id = usuarios.id
         grupoUsuariosDelete.id = usuarios.grupoUsuariosIdFK.id
         usuariosDelete.grupoUsuariosIdFK = grupoUsuariosDelete
-
-
 
         if (grupoUsuariosDelete.id <= 2) {
 

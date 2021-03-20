@@ -11,8 +11,6 @@ const updateEmpresaRpository = async (empresa : Empresas)=>{
     }catch(e){
 
     }
-
-
 }
 
 const deleteIdEmpresaRpository = async (idEmpresa : number)=>{
@@ -25,8 +23,6 @@ const deleteIdEmpresaRpository = async (idEmpresa : number)=>{
     }catch(e){
 
     }
-
-
 }
 
 
