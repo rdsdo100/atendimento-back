@@ -10,6 +10,9 @@ import { decodificar } from "../../config/Jwt";
 @ClassMiddleware([decodificar])
 export default class AtendimentosController {
 
+readonly atendimentosBusiness = new AtendimentosBusiness
+readonly atendimentos = new Atendimentos
+
     @Get()
     async buscarAtendimentoUsuarios(request: Request, response: Response) {
         const usuarioId = Number(request.body.decoded.id)
@@ -17,6 +20,18 @@ export default class AtendimentosController {
         const retornoBuscaAtendimento = await atendimentosBusiness.buscarAtendimentosUsuarios(usuarioId)
         return response.status(200).json(retornoBuscaAtendimento)
 
+    }
+
+    @Get("graficos")
+    async buscaGraficosEmpresasAtendimentos (_: Request, response: Response) {
+
+        
+        const resultado = await this.atendimentosBusiness.buscarAtendimentosEmpresas()
+
+        
+        return response.status(200).json(resultado)
+
+        
     }
 
     @Post()

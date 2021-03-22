@@ -55,10 +55,29 @@ const deleteIdAtendimentoRepository = async (idAtendimento: number) => {
 
 };
 
+const buscaEmpresaAtendimentos = async ()=>{
 
+    let retornoAtendimento: any
+    
+    try{
+    retornoAtendimento = await createQueryBuilder("Atendimentos" )
+    .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
+    .groupBy('Atendimentos.empresasIdFK')
+    .getMany()
+
+    return retornoAtendimento
+
+    }catch(e){
+
+        return e
+    }
+    
+    
+}
 
 
 export {
+    buscaEmpresaAtendimentos,
 
     insertAtendimentoRepository,
     buscarAtendimentoUsuarioRepository,

@@ -1,6 +1,6 @@
 
 import { Atendimentos } from "../../entity/Atendimentos";
-import { insertAtendimentoRepository, buscarAtendimentoUsuarioRepository, deleteIdAtendimentoRepository, buscarAtendimentoIdRepository, updateAtendimentosRepository } from "../../repository/atendimentosRepository";
+import { insertAtendimentoRepository, buscarAtendimentoUsuarioRepository, deleteIdAtendimentoRepository, buscarAtendimentoIdRepository, updateAtendimentosRepository, buscaEmpresaAtendimentos } from "../../repository/atendimentosRepository";
 
 
 export default class AtendimentosBusiness {
@@ -63,6 +63,16 @@ export default class AtendimentosBusiness {
             return message = 'Atendimento Não deletado, Data Incompativél!'
         }
     }
+
+
+async  buscarAtendimentosEmpresas() {
+
+
+    const retorno = await buscaEmpresaAtendimentos()
+    
+    return retorno
+    
+}
 
 
 }
