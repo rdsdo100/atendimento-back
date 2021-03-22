@@ -49,22 +49,32 @@ const updateAtendimentosRepository = async (atendimento : Atendimentos) => {
 };
 
 const deleteIdAtendimentoRepository = async (idAtendimento: number) => {
-    const AtendimentoRepository = getManager();
-   await AtendimentoRepository.delete(Atendimentos , {id: idAtendimento})
+    const atendimentoRepository = getManager();
+   await atendimentoRepository.delete(Atendimentos , {id: idAtendimento})
 
 
 };
 
 const buscaEmpresaAtendimentos = async ()=>{
 
+
+    const atendimentoRepository = getManager();
     let retornoAtendimento: any
     
     try{
-    retornoAtendimento = await createQueryBuilder("Atendimentos" )
-    .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
-    .groupBy('Atendimentos.empresasIdFK')
-    .getMany()
+    // retornoAtendimento = await createQueryBuilder("Atendimentos" )
+    // .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
+    // .groupBy('Atendimentos.empresasIdFK')
+    // .getMany()
 
+    retornoAtendimento= await atendimentoRepository.query(`
+    select e.codigo_empresa, count(e.codigo_empresa)  from  atendimentos as a
+    left join empresas e on e.id = a.empresas_id_fk 
+    group by e.codigo_empresa ;`)
+
+   
+
+   
     return retornoAtendimento
 
     }catch(e){
