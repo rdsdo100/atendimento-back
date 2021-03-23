@@ -19,6 +19,6 @@ export class Empresas extends BaseEntity {
     atendimentos: Atendimentos[];
 
     @ManyToOne(() => GrupoEmpresas, (grupoEmpreasas) => grupoEmpreasas.empresas )
-    @JoinColumn([{ name: 'grupo_usuarios_id_fk', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'grupo_empresas_id_fk', referencedColumnName: 'id' }])
     grupoEmpresaIdFK: GrupoEmpresas;
 }

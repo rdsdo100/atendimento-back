@@ -70,7 +70,17 @@ async  buscarAtendimentosEmpresas() {
 
     const retorno = await buscaEmpresaAtendimentos()
     
-    return retorno
+
+let retornoFormatado = retorno.map((item : any) =>{
+return {
+    codigoEmpresa: item.codigo_empresa ,
+    count: Number(item.count)
+}
+
+
+})
+
+    return retornoFormatado
     
 }
 
