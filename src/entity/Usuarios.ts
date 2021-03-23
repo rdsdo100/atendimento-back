@@ -6,6 +6,7 @@ import {
 } from "typeorm";
 import {GrupoUsuarios} from "./GrupoUsuarios";
 import {Atendimentos} from "./Atendimentos";
+import { TipoEquipe } from "./TipoEquipe";
 
 @Entity()
 export class Usuarios extends BaseEntity {
@@ -31,6 +32,11 @@ export class Usuarios extends BaseEntity {
     @ManyToOne(() => GrupoUsuarios, (grupoUsuarios) => grupoUsuarios.usuarios )
     @JoinColumn([{ name: 'grupo_usuarios_id_fk', referencedColumnName: 'id' }])
     grupoUsuariosIdFK: GrupoUsuarios;
+
+    
+    @ManyToOne(() => TipoEquipe, (tipoEquipe) => tipoEquipe.usuarios )
+    @JoinColumn([{ name: 'tipo_equipe_id_fk', referencedColumnName: 'id' }])
+    tipoEquipeIdFK: TipoEquipe;
 
     @OneToMany(() => Atendimentos, (atendimentos) => atendimentos.usuariosIdFK)
     atendimentos: Atendimentos[];

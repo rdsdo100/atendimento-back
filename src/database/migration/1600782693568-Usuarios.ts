@@ -55,6 +55,10 @@ columns:[
         name: 'grupo_usuarios_id_fk',
         type: 'int',
     },
+    {
+        name: 'tipo_equipe_id_fk',
+        type: 'int',
+    },
 ]
 
     })
@@ -69,6 +73,15 @@ await queryRunner.createForeignKey(
         referencedColumnNames: ['id'],
         referencedTableName: 'grupo_usuarios',
         name: 'usuarios_grupos_usuarios',
+    }),
+);
+await queryRunner.createForeignKey(
+    'usuarios',
+    new TableForeignKey({
+        columnNames: ['tipo_equipe_id_fk'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'tipo_equipe',
+        name: 'usuarios_tipo_equipe',
     }),
 );
 

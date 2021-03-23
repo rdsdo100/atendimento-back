@@ -4,6 +4,7 @@ import UsuaruiosController from "../controller/usuarios/UsuaruiosController";
 import LoginController from "../controller/usuarios/LoginController";
 import AtendimentosController from "../controller/atendimentos/AtendimentosController";
 import EmpresasController from '../controller/empresas/EmpresasController';
+import GrupoEmpresasController from '../controller/empresas/GrupoEmpresasController';
 
 
 
@@ -13,6 +14,7 @@ const login = new LoginController()
 const atendimento = new AtendimentosController()
 const gurpoUsuario = new GurpoUsuarioController()
 const empresa = new EmpresasController()
+const  grupoEmpresa = new GrupoEmpresasController()
 
 
 export const routes = [
@@ -21,7 +23,8 @@ export const routes = [
     login,
     gurpoUsuario,
     atendimento,
-    empresa
+    empresa,
+    grupoEmpresa
     
 
 ]

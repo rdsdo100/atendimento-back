@@ -1,10 +1,10 @@
 import { ClassMiddleware, Controller, Delete, Get, Post, Put } from "@overnightjs/core";
-import { getRepository } from "typeorm";
 import { Usuarios } from "../../entity/Usuarios";
 import { Request, Response } from 'express'
 import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
 import UsuariosBusiness from "../../business/usuarios/UsuariosBusiness";
 import { decodificar } from "../../config/Jwt";
+import { TipoEquipe } from "../../entity/TipoEquipe";
 
 @Controller('user')
 @ClassMiddleware([decodificar])
@@ -46,6 +46,7 @@ export default class UsuaruiosController {
 
 
         const usuarios = new Usuarios()
+        const tipoEquipe = new TipoEquipe
         const grupoUsuaruios = new GrupoUsuarios()
         const usuariosBusiness = new UsuariosBusiness()
 
@@ -54,7 +55,9 @@ export default class UsuaruiosController {
         usuarios.email = String(request.body.email)
         usuarios.senha = String(request.body.senha)
         grupoUsuaruios.id = Number(request.body.grupoUsuario)
+        tipoEquipe.id = Number(request.body.tipoEquipe)
         usuarios.grupoUsuariosIdFK = grupoUsuaruios
+        usuarios.tipoEquipeIdFK = tipoEquipe
 
         const resposta = await usuariosBusiness.updateUsuario(usuarios)
         response.json(resposta)

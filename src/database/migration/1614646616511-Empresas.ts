@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class Empresas1614646616511 implements MigrationInterface {
 
@@ -31,10 +31,25 @@ export class Empresas1614646616511 implements MigrationInterface {
                         isNullable: false
                         
                     },
+                    {
+                        name: 'grupo_empresas_id_fk',
+                        type: 'int',
+                        default: 1
+                    },
                 ]
                 
             })
         )
+
+        await queryRunner.createForeignKey(
+            'empresas',
+            new TableForeignKey({
+                columnNames: ['grupo_empresas_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'grupo_empresas',
+                name: 'usuarios_grupo_empresas',
+            }),
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
