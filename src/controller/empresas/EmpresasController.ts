@@ -3,7 +3,8 @@ import { ClassMiddleware, Controller, Delete, Get, Post, Put } from "@overnightj
 import EmpresasBusiness from "../../business/empresas/EmpresasBusiness";
 import { Empresas } from "../../entity/Empresas";
 import { decodificar } from "../../config/Jwt";
-import { GrupoEmpreasa } from "../../entity/GrupoEmpresas";
+import { GrupoEmpresas } from "../../entity/GrupoEmpresas";
+
 
 @Controller('empresa')
 @ClassMiddleware([decodificar])
@@ -22,12 +23,12 @@ export default class EmpresasController {
     async cadastrarEmpresa(request: Request, response: Response) {
         const empresa = new Empresas()
         const empresasBusiness = new EmpresasBusiness()
-        const grupoEmpresa = new GrupoEmpreasa()
+        const grupoEmpresa = new GrupoEmpresas()
 
         empresa.codigoEmpresa = String(request.body.codigoEmpresa)
         empresa.nomeEmpresa = String(request.body.nomeEmpresa)
         grupoEmpresa.id = Number(request.body.grupoEmpresa)
-        empresa.grupoEmpreasaIdFK = grupoEmpresa
+        empresa.grupoEmpresaIdFK = grupoEmpresa
 
 
         const retornoinsertEmpresa = await empresasBusiness.cadastrarEmpresas(empresa)

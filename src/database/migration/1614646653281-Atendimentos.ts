@@ -29,8 +29,6 @@ export class Atendimentos1614646653281 implements MigrationInterface {
                         isNullable: false,
 
                     },
-
-
                     {
                         name: 'usuarios_id_fk',
                         type: 'int',

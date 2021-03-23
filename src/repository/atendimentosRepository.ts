@@ -5,6 +5,8 @@ const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<an
 
     let retornoAtendimento : any
 
+
+    try{
     retornoAtendimento = await createQueryBuilder("Atendimentos" )
         .leftJoinAndSelect('Atendimentos.empresasIdFK' , 'empresaId')
         .leftJoin('Atendimentos.usuariosIdFK' , 'usuarioId')
@@ -12,7 +14,9 @@ const buscarAtendimentoUsuarioRepository = async (idUsuario: number): Promise<an
         .getMany()
 
     return retornoAtendimento
-
+}catch(e){
+    console.log(e)
+}
 
 };
 
