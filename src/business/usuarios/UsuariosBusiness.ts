@@ -20,7 +20,6 @@ export default class UsuariosBusiness {
                 retMap.nomeUsuario = user.nomeUsuario
                 retMap.email = user.nomeUsuario
                 retMap.senha = user.senha
-                retMap.matricula = user.matricula
                 retMap.ativo = user.ativo
                 retMap.bloqueado = user.bloqueado
                 retMap.grupoUsuariosIdFK = user.grupoUsuariosIdFK
