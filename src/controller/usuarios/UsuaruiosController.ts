@@ -28,12 +28,15 @@ export default class UsuaruiosController {
         const usuarios = new Usuarios()
         const grupoUsuaruios = new GrupoUsuarios()
         const usuariosBusiness = new UsuariosBusiness()
+        const tipoEquipe = new TipoEquipe()
 
         usuarios.nomeUsuario = String(request.body.nome)
         usuarios.email = String(request.body.email)
         usuarios.senha = String(request.body.senha)
         grupoUsuaruios.id = Number(request.body.grupoUsuario)
+        tipoEquipe.id = Number(request.body.equipeUsuario)
         usuarios.grupoUsuariosIdFK = grupoUsuaruios
+        usuarios.tipoEquipeIdFK= tipoEquipe
 
         const retornoUsuario = await usuariosBusiness.cadastroUsuariosBuisiness(usuarios)
 
@@ -46,7 +49,7 @@ export default class UsuaruiosController {
 
 
         const usuarios = new Usuarios()
-        const tipoEquipe = new TipoEquipe
+        const tipoEquipe = new TipoEquipe()
         const grupoUsuaruios = new GrupoUsuarios()
         const usuariosBusiness = new UsuariosBusiness()
 

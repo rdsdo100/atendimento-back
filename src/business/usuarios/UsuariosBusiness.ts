@@ -23,6 +23,7 @@ export default class UsuariosBusiness {
                 retMap.ativo = user.ativo
                 retMap.bloqueado = user.bloqueado
                 retMap.grupoUsuariosIdFK = user.grupoUsuariosIdFK
+                retMap.tipoEquipeIdFK = user.tipoEquipeIdFK
 
                 return retMap
 

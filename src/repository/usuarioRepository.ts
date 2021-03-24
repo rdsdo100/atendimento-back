@@ -26,6 +26,7 @@ const buscarUsuarioRepositoryAll = async () => {
 
     const  user = await createQueryBuilder('Usuarios')
          .leftJoinAndSelect('Usuarios.grupoUsuariosIdFK' , 'usuarios')
+         .leftJoinAndSelect('Usuarios.tipoEquipeIdFK' , 'equipeUsuarios')
          .getMany()
  
      return user
