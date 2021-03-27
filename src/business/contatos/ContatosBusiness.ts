@@ -3,7 +3,8 @@ import { Atendimentos } from "../../entity/Atendimentos";
 import { ContatosPessoas } from "../../entity/ContatosPessoas";
 import { ContatosTelefones } from "../../entity/ContatosTelefones";
 import { PessoasTelefones } from "../../entity/PessoasTelefones";
-import ContatosRepository from "../../repository/ContatosRepository";
+import ContatosRepository from "../../repositoryDb/ContatosRepository";
+
 
 
 
