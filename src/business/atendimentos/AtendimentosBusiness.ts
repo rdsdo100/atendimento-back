@@ -1,6 +1,6 @@
 
 import { Atendimentos } from "../../entity/Atendimentos";
-import AtendimentosRepository from "../../repositoryDb/AtendimentosRepository";
+import AtendimentosRepository from "../../repository/AtendimentosRepository";
 
 
 export default class AtendimentosBusiness {

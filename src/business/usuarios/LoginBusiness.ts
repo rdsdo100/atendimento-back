@@ -1,6 +1,6 @@
 import {Usuarios} from "../../entity/Usuarios";
 import {assinar} from "../../config/Jwt";
-import UsuarioRepository from "../../repositoryDb/UsuarioRepository";
+import UsuarioRepository from "../../repository/UsuarioRepository";
 
 
 export  default class LoginBusiness {

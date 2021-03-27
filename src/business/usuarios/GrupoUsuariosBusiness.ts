@@ -1,4 +1,4 @@
-import GrupoUsuarioRepository from "../../repositoryDb/GrupoUsuarioRepository"
+import GrupoUsuarioRepository from "../../repository/GrupoUsuarioRepository"
 
 export default class GrupoUsuariosBusiness {
 
