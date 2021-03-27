@@ -1,4 +1,4 @@
-import EquipeUsuarioRepository from "../../repository/EquipeUsuarioRepository"
+import EquipeUsuarioRepository from "../../repositoryDb/EquipeUsuarioRepository"
 
 export default class EquipeUsuariosBusiness {
 
