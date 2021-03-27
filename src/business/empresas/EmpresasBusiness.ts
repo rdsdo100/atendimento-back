@@ -1,9 +1,8 @@
 
 import { Empresas } from "../../entity/Empresas";
-import UsuarioRepository from "../../repository/usuarioRepository";
+import UsuarioRepository from "../../repository/UsuarioRepository";
 import { Usuarios } from "../../entity/Usuarios";
 import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
-import EquipeUsuarioController from "../../controller/usuarios/EquipeUsuarioController";
 import EmpresasRepository from "../../repository/EmpresasRepository";
 
 export default class EmpresasBusiness {

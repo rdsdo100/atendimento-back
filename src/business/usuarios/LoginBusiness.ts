@@ -2,6 +2,7 @@ import {Usuarios} from "../../entity/Usuarios";
 import {assinar} from "../../config/Jwt";
 import UsuarioRepository from "../../repository/UsuarioRepository";
 
+
 export  default class LoginBusiness {
 
     readonly usuarioRepository = new UsuarioRepository
