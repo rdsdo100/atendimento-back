@@ -6,6 +6,7 @@ import { PessoasTelefones } from "../../entity/PessoasTelefones";
 import ContatosRepository from "../../repository/ContatosRepository";
 
 
+
 export default class ContatosBusiness {
 
     readonly contatosTelefones = new ContatosTelefones
