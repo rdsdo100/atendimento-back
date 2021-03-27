@@ -1,13 +1,11 @@
 import { getManager } from "typeorm";
 import { TipoEquipe } from "../entity/TipoEquipe";
 
+export default class EquipeUsuarioRepository {
 
-const listEquipeUsuarioRepository = async (): Promise<any> => {
-    const equipeRepository = getManager();
-    return equipeRepository.find(TipoEquipe);
+    async listEquipeUsuarioRepository(): Promise<any> {
+        const equipeRepository = getManager();
+        return equipeRepository.find(TipoEquipe);
 
-};
-
-export {
-    listEquipeUsuarioRepository
+    };
 }

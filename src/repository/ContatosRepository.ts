@@ -6,8 +6,6 @@ import { PessoasTelefones } from '../entity/PessoasTelefones';
 
 export default class ContatosRepository{
 
-   
-
 async insertContatosRepository  (contatosPessoas : ContatosPessoas,
     contatosTelefones:   ContatosTelefones,
     pessoasTelefones: PessoasTelefones,
@@ -47,9 +45,5 @@ async insertContatosRepository  (contatosPessoas : ContatosPessoas,
         return usuarioRetorno;
     };
     
-
-
-
-
 }
 

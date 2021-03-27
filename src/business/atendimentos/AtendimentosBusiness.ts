@@ -1,27 +1,28 @@
 
 import { Atendimentos } from "../../entity/Atendimentos";
-import { insertAtendimentoRepository, buscarAtendimentoUsuarioRepository, deleteIdAtendimentoRepository, buscarAtendimentoIdRepository, updateAtendimentosRepository, buscaEmpresaAtendimentos } from "../../repository/atendimentosRepository";
+import AtendimentosRepository from "../../repository/AtendimentosRepository";
 
 
 export default class AtendimentosBusiness {
 
+    readonly atendimentosRepository = new AtendimentosRepository
 
     async cadastrarAtendimentos(atendimento: Atendimentos): Promise<any> {
 
-        const atendimentoSalvo = await insertAtendimentoRepository(atendimento)
+        const atendimentoSalvo = await this.atendimentosRepository.insertAtendimentoRepository(atendimento)
         return atendimentoSalvo
     }
 
     async updateAtendimentos(atendimento: Atendimentos): Promise<any> {
 
-        const atendimentoUpdate = await updateAtendimentosRepository(atendimento)
+        const atendimentoUpdate = await this.atendimentosRepository.updateAtendimentosRepository(atendimento)
         return atendimentoUpdate
     }
 
 
     async buscarAtendimentosUsuarios(idUsuario: number) {
 
-        const retornoListAtendimentos = await buscarAtendimentoUsuarioRepository(idUsuario)
+        const retornoListAtendimentos = await this.atendimentosRepository.buscarAtendimentoUsuarioRepository(idUsuario)
 
         const retornoAtendimentoFormatado = retornoListAtendimentos.map((atendimento: any) => {
             return {
@@ -39,7 +40,7 @@ export default class AtendimentosBusiness {
     }
 
     async deletarAtendimentos(idAtendimento: number, idUsuario: number) {
-        const atendimento = await buscarAtendimentoIdRepository(idAtendimento)
+        const atendimento = await this.atendimentosRepository.buscarAtendimentoIdRepository(idAtendimento)
         const dataHoje = new Date
         const dataAtendimento: Date = atendimento.dataAtendimento
         let message: string = ''
@@ -53,7 +54,7 @@ export default class AtendimentosBusiness {
               (idUsuario === Number(atendimento.usuariosIdFK.id)) ) ){
               
                 console.log(atendimento)
-                deleteIdAtendimentoRepository(idAtendimento)
+                this.atendimentosRepository.deleteIdAtendimentoRepository(idAtendimento)
                 return message = 'Atendimento Deletado!'
 
             }else {
@@ -68,7 +69,7 @@ export default class AtendimentosBusiness {
 async  buscarAtendimentosEmpresas() {
 
 
-    const retorno = await buscaEmpresaAtendimentos()
+    const retorno = await this.atendimentosRepository.buscaEmpresaAtendimentos()
     
 
 let retornoFormatado = retorno.map((item : any) =>{

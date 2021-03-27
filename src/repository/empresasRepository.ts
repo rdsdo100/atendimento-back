@@ -1,8 +1,9 @@
 import {getManager} from 'typeorm';
-import {Empresas} from "../entity/Empresas";
+import { Empresas } from '../entity/Empresas';
 
+export default class EmpresasRepository {
 
-const updateEmpresaRpository = async (empresa : Empresas)=>{
+    async updateEmpresaRpository  (empresa : Empresas) {
     const empresaRepository = getManager();
 
     try{
@@ -13,7 +14,7 @@ const updateEmpresaRpository = async (empresa : Empresas)=>{
     }
 }
 
-const deleteIdEmpresaRpository = async (idEmpresa : number)=>{
+async deleteIdEmpresaRpository (idEmpresa : number) {
 
     const empresaRepository = getManager();
 
@@ -26,13 +27,13 @@ const deleteIdEmpresaRpository = async (idEmpresa : number)=>{
 }
 
 
-const listEmpresasRepository = async (): Promise<any> => {
+async listEmpresasRepository (): Promise<any> {
     const usuarioRepository = getManager();
     return usuarioRepository.find(Empresas);
 
 };
 
-const insertEmpresasRepository = async (empresa: Empresas)=>{
+async insertEmpresasRepository (empresa: Empresas) {
     const insertEmpresa = getManager()
 
     try{
@@ -45,7 +46,7 @@ const insertEmpresasRepository = async (empresa: Empresas)=>{
 }
 
 
-const buscarEmpresaIdRepository = async (idEmpresa: number): Promise<any> => {
+async buscarEmpresaIdRepository  (idEmpresa: number): Promise<any>  {
     const empresaRepository = getManager();
     try{
     return empresaRepository.findOne(Empresas , {id: idEmpresa});
@@ -54,12 +55,4 @@ const buscarEmpresaIdRepository = async (idEmpresa: number): Promise<any> => {
 }
 };
 
-export {
-
-listEmpresasRepository,
-updateEmpresaRpository,
-    insertEmpresasRepository,
-    buscarEmpresaIdRepository,
-    deleteIdEmpresaRpository
-
-};
+}

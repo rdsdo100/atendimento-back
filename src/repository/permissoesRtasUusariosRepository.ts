@@ -1,7 +1,8 @@
 import {createQueryBuilder} from "typeorm";
 
+export default class PermissoesRtasUusariosRepository{
 
-const buscarPermissoesRtasUusariosRepository = async (idUsuario: number) => {
+async buscarPermissoesRtasUusariosRepository (idUsuario: number) {
 
  let buscarPrmissoes:any
 
@@ -14,6 +15,4 @@ const buscarPermissoesRtasUusariosRepository = async (idUsuario: number) => {
     return buscarPrmissoes
 };
 
-export {
-    buscarPermissoesRtasUusariosRepository
 }

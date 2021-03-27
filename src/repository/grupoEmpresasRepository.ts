@@ -3,19 +3,15 @@ import { GrupoEmpresas } from '../entity/GrupoEmpresas';
 
 
 
+export default class GrupoEmpresasRepository {
 
 
 
-const listGruoEmpresasRepository = async (): Promise<any> => {
+async listGruoEmpresasRepository (): Promise<any> {
     const usuarioRepository = getManager();
     return await usuarioRepository.find(GrupoEmpresas);
 
 };
 
+}
 
-
-
-export {
-
-    listGruoEmpresasRepository,
-};

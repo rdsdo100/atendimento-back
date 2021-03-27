@@ -1,34 +1,33 @@
-import {
-    buscarEmpresaIdRepository,
-    deleteIdEmpresaRpository,
-    insertEmpresasRepository,
-    listEmpresasRepository,
-    updateEmpresaRpository
-} from "../../repository/empresasRepository";
+
 import { Empresas } from "../../entity/Empresas";
-import { buscarUsuarioGrupoUsuarioId } from "../../repository/usuarioRepository";
+import UsuarioRepository from "../../repository/usuarioRepository";
 import { Usuarios } from "../../entity/Usuarios";
 import { GrupoUsuarios } from "../../entity/GrupoUsuarios";
+import EquipeUsuarioController from "../../controller/usuarios/EquipeUsuarioController";
+import EmpresasRepository from "../../repository/EmpresasRepository";
 
 export default class EmpresasBusiness {
+
+    readonly grupoUsuarioRepostory = new UsuarioRepository
+    readonly empresasRepository = new EmpresasRepository
 
 
     async cadastrarEmpresas(empresa: Empresas): Promise<any> {
 
 
-        const empresasSalvo = await insertEmpresasRepository(empresa)
+        const empresasSalvo = await this.empresasRepository.insertEmpresasRepository(empresa)
         return empresasSalvo
     }
 
     async listarEmpresas() {
 
-        const retornoListEmpresas = await listEmpresasRepository()
+        const retornoListEmpresas = await this.empresasRepository.listEmpresasRepository()
         return retornoListEmpresas
     }
 
     async updateEmpresa(empresa: Empresas): Promise<any> {
 
-        const empresaUpdate = await updateEmpresaRpository(empresa)
+        const empresaUpdate = await this.empresasRepository.updateEmpresaRpository(empresa)
         return empresaUpdate
 
     }
@@ -37,8 +36,8 @@ export default class EmpresasBusiness {
         const empresaDelete = new Empresas()
         const usuariosDelete = new Usuarios()
         const grupoUsuariosDelete = new GrupoUsuarios()
-        const empresa: any = await buscarEmpresaIdRepository(idEmpresa)
-        const usuarios: any = await buscarUsuarioGrupoUsuarioId(idUsuario)
+        const empresa: any = await this.empresasRepository.buscarEmpresaIdRepository(idEmpresa)
+        const usuarios: any = await this.grupoUsuarioRepostory.buscarUsuarioGrupoUsuarioId(idUsuario)
 
         empresaDelete.id = empresa.id
         usuariosDelete.id = usuarios.id
@@ -49,7 +48,7 @@ export default class EmpresasBusiness {
 
             if (empresaDelete.id === idEmpresa) {
                
-                await deleteIdEmpresaRpository(idEmpresa)
+                await this.empresasRepository.deleteIdEmpresaRpository(idEmpresa)
 
                 return 'Empresa Deletada!'
             } else {

@@ -1,8 +1,8 @@
 import { createQueryBuilder } from "typeorm";
 
+export default class LoginRepository{
 
-
-const buscarUsuarioLoginRepository = async (nomeUsuario: string) => {
+async buscarUsuarioLoginRepository (nomeUsuario: string) {
 
     const  user = await createQueryBuilder('Usuarios')
          .leftJoinAndSelect('Usuarios.grupoUsuariosIdFK' , 'usuarios')
@@ -15,3 +15,4 @@ const buscarUsuarioLoginRepository = async (nomeUsuario: string) => {
  };
  
  
+}

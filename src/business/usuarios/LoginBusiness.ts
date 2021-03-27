@@ -1,9 +1,10 @@
 import {Usuarios} from "../../entity/Usuarios";
 import {assinar} from "../../config/Jwt";
-import {buscarUsuarioRepository} from "../../repository/usuarioRepository";
+import UsuarioRepository from "../../repository/UsuarioRepository";
 
 export  default class LoginBusiness {
 
+    readonly usuarioRepository = new UsuarioRepository
 
     async index(){
 
@@ -15,7 +16,7 @@ export  default class LoginBusiness {
 
         let getUsuario:any
 
-        getUsuario = await buscarUsuarioRepository(usuario.nomeUsuario)
+        getUsuario = await this.usuarioRepository.buscarUsuarioRepository(usuario.nomeUsuario)
 
             if ((!getUsuario?.nomeUsuario) || (getUsuario?.senha != usuario.senha)) {
                 return ({message: "Usuario  ou senha incorreto!"})
