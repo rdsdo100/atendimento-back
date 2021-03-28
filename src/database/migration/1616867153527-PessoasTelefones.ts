@@ -22,7 +22,7 @@ export class PessoasTelefones1616867153527 implements MigrationInterface {
                     },
 
                     {
-                        name: 'telefoness_id_fk',
+                        name: 'telefones_id_fk',
                         type: 'int',
                     },
                 ]
@@ -43,7 +43,7 @@ export class PessoasTelefones1616867153527 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'pessoas_telefones',
             new TableForeignKey({
-                columnNames: ['telefoness_id_fk'],
+                columnNames: ['telefones_id_fk'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'contatos_telefones',
                 name: 'contatos_telefones_pessoas_telefones',

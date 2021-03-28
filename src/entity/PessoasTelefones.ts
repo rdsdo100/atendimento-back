@@ -8,11 +8,11 @@ export class PessoasTelefones {
     id: number;
 
     @ManyToOne(() => ContatosPessoas, (contatosPessoas) => contatosPessoas.pessoasTelefones)
-    @JoinColumn([{ name: 'empresas_id_fk', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'pessoass_id_fk', referencedColumnName: 'id' }])
     contatosPessoasIdFK: ContatosPessoas;
 
     @ManyToOne(() => ContatosTelefones, (contatosTelefones) => contatosTelefones.pessoasTelefones)
-    @JoinColumn([{ name: 'empresas_id_fk', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'telefones_id_fk', referencedColumnName: 'id' }])
     contatosTelefonesIdFK: ContatosTelefones;
 
 }

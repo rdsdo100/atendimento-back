@@ -15,14 +15,12 @@ export default class ContatosBusiness {
     readonly pessoasTelefones = new PessoasTelefones
     readonly contatosRepository = new ContatosRepository
 
-    async cadastrarAtendimentos(atendimento: Atendimentos): Promise<any> { }
+    async cadastrarContatos(atendimento: Atendimentos): Promise<any> { }
 
-    async updateAtendimentos(atendimento: Atendimentos): Promise<any> { }
+    async updateContatos(atendimento: Atendimentos): Promise<any> { }
 
-    async buscarAtendimentosUsuarios(idUsuario: number) { }
+    async deletarContatos(idAtendimento: number, idUsuario: number) { }
 
-    async deletarAtendimentos(idAtendimento: number, idUsuario: number) { }
-
-    async buscarAtendimentosEmpresas() { }
+    
 
 }
