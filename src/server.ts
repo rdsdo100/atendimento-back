@@ -1,4 +1,4 @@
-import './config/module-alias'
+
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import cors from 'cors'

@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { ClassMiddleware, Controller, Get, Post, Delete, Put } from "@overnightjs/core";
-import { decodificar } from "@src/config/Jwt";
-import AtendimentosBusiness from "@src/business/atendimentos/AtendimentosBusiness";
-import { Atendimentos } from "@src/entity/Atendimentos";
-import { Empresas } from "@src/entity/Empresas";
-import { Usuarios } from "@src/entity/Usuarios";
+import AtendimentosBusiness from "../../business/atendimentos/AtendimentosBusiness";
+import { decodificar } from "../../config/Jwt";
+import { Atendimentos } from "../../entity/Atendimentos";
+import { Empresas } from "../../entity/Empresas";
+import { Usuarios } from "../../entity/Usuarios";
+
 
 
 @Controller('atendimento')
