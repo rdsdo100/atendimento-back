@@ -29,6 +29,13 @@ export class ContatosTelefones1616867134819 implements MigrationInterface {
                         length: '12',
                         isNullable: false,
 
+                    },
+                    {
+                        name: 'descricao',
+                        type: 'varchar',
+                        length: '70',
+                        isNullable: false,
+
                     }
                 ]
                 

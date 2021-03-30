@@ -11,6 +11,11 @@ export class ContatosPessoas {
 @Column({name: 'nome', type: 'varchar', length: '500', nullable: false})
     nome: string
 
+
+   @Column( {name: 'cargo', type: 'varchar', length: '150', nullable: false})
+    cargo:string
+
+
     @OneToMany(() => PessoasTelefones, (pessoasTelefones) => pessoasTelefones.contatosPessoasIdFK)
     pessoasTelefones: PessoasTelefones[];
 

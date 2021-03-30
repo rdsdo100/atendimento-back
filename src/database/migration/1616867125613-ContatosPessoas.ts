@@ -24,6 +24,13 @@ export class ContatosPessoas1616867125613 implements MigrationInterface {
                         isNullable: false,
 
                     },
+                    {
+                        name: 'Cargo',
+                        type: 'varchar',
+                        length: '150',
+                        isNullable: false,
+
+                    },
 
                     {
                         name: 'empresas_id_fk',
