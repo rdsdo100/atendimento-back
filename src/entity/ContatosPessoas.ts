@@ -1,4 +1,5 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import { Empresas } from "./Empresas";
 import { PessoasTelefones } from "./PessoasTelefones";
 
 @Entity({name: "contatos_pessoas"})
@@ -19,7 +20,9 @@ export class ContatosPessoas {
     @OneToMany(() => PessoasTelefones, (pessoasTelefones) => pessoasTelefones.contatosPessoasIdFK)
     pessoasTelefones: PessoasTelefones[];
 
-
+    @ManyToOne(() => Empresas , (empresas) => empresas.contatosPessoas)
+    @JoinColumn([{ name: 'empresas_id_fk', referencedColumnName: 'id' }])
+    empresasIdFK: Empresas;
 
     
 }

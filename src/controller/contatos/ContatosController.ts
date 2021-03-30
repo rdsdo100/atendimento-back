@@ -1,29 +1,45 @@
 import { Request, Response } from "express";
 import { ClassMiddleware, Controller, Get, Post, Delete, Put } from "@overnightjs/core";
-import { Atendimentos } from "../../entity/Atendimentos";
-import AtendimentosBusiness from "../../business/atendimentos/AtendimentosBusiness";
-import { Empresas } from "../../entity/Empresas";
-import { Usuarios } from "../../entity/Usuarios";
 import { decodificar } from "../../config/Jwt";
 import { ContatosTelefones } from "../../entity/ContatosTelefones";
 import { ContatosPessoas } from "../../entity/ContatosPessoas";
-import { PessoasTelefones } from "../../entity/PessoasTelefones";
 import ContatosBusiness from "../../business/contatos/ContatosBusiness";
+import { Empresas } from "../../entity/Empresas";
 
-@Controller('contatos')
-@ClassMiddleware([decodificar])
+
+@Controller('contato')
+//@ClassMiddleware([decodificar])
 export default class ContatosController {
 
 readonly contatosTelefones = new ContatosTelefones
 readonly contatosPessoas = new ContatosPessoas
-readonly pessoasTelefones = new PessoasTelefones
+
+readonly empresa = new Empresas
 readonly contatosBusiness = new ContatosBusiness
 
     @Get()
     async buscarContatosUsuarios(request: Request, response: Response) { }
 
     @Post()
-    async cadastrarContatoss(request: Request, response: Response) { }
+    async cadastrarContatos(request: Request, response: Response) { 
+
+        this.empresa.id = Number(request.body.idEmpresa)
+
+        this.contatosPessoas.nome = String(request.body.nome)
+        this.contatosPessoas.cargo = String(request.body.cargo)
+        this.contatosPessoas.empresasIdFK = this.empresa
+
+        this.contatosTelefones.dd = String(request.body.telefones.dd)
+        this.contatosTelefones.telefone = String(request.body.telefones.telefone)
+        this.contatosTelefones.descricao = String(request.body.telefones.descricao)
+
+        const retorno = await this.contatosBusiness.cadastrarContatos(this.contatosPessoas , this.contatosTelefones)
+
+        return response.status(200).json(retorno)
+
+
+
+    }
 
     @Delete(":id")
     async deletarContatos(request: Request, response: Response) { }
@@ -33,3 +49,19 @@ readonly contatosBusiness = new ContatosBusiness
 
 
 }
+
+/**
+ * 
+ * {  
+    "idEmpresa": 1 ,
+    "nome": "Rubens",
+	"cargo": "Suporte" ,
+    "telefones": {
+    
+    "dd": "62",
+    "telefone": "991544066",
+			"descricao": "principal"
+}	
+}
+ * 
+ */

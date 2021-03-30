@@ -1,26 +1,26 @@
 
-import { Atendimentos } from "../../entity/Atendimentos";
 import { ContatosPessoas } from "../../entity/ContatosPessoas";
 import { ContatosTelefones } from "../../entity/ContatosTelefones";
-import { PessoasTelefones } from "../../entity/PessoasTelefones";
 import ContatosRepository from "../../repositoryDb/ContatosRepository";
-
-
-
 
 export default class ContatosBusiness {
 
     readonly contatosTelefones = new ContatosTelefones
     readonly contatosPessoas = new ContatosPessoas
-    readonly pessoasTelefones = new PessoasTelefones
+
     readonly contatosRepository = new ContatosRepository
 
-    async cadastrarContatos(atendimento: Atendimentos): Promise<any> { }
+    async cadastrarContatos(contatosPessoas: ContatosPessoas, contatosTelefones: ContatosTelefones): Promise<any> {
 
-    async updateContatos(atendimento: Atendimentos): Promise<any> { }
+        const resposta = await this.contatosRepository.insertContatosRepository(contatosPessoas, contatosTelefones)
+        return resposta
 
-    async deletarContatos(idAtendimento: number, idUsuario: number) { }
+    }
 
-    
+    async updateContatos(): Promise<any> { }
+
+    async deletarContatos() { }
+
+
 
 }
