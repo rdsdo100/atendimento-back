@@ -25,7 +25,7 @@ export class ContatosPessoas1616867125613 implements MigrationInterface {
 
                     },
                     {
-                        name: 'Cargo',
+                        name: 'cargo',
                         type: 'varchar',
                         length: '150',
                         isNullable: false,
