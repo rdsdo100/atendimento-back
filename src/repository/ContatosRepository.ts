@@ -1,4 +1,4 @@
-import { getConnection } from 'typeorm';
+import { createQueryBuilder, getConnection } from 'typeorm';
 import { ContatosPessoas } from '../entity/ContatosPessoas';
 import { ContatosTelefones } from '../entity/ContatosTelefones';
 import { PessoasTelefones } from '../entity/PessoasTelefones';
@@ -6,6 +6,8 @@ import { PessoasTelefones } from '../entity/PessoasTelefones';
 export default class ContatosRepository {
 
     readonly pessoasTelefones = new PessoasTelefones
+    readonly contatoPessoas = new ContatosPessoas()
+    readonly contatosTeletones = new ContatosTelefones()
 
     async insertContatosRepository(contatosPessoas: ContatosPessoas,
         contatosTelefones: ContatosTelefones,
@@ -86,6 +88,28 @@ export default class ContatosRepository {
 
         return salverPessoasTelefones
     };
+
+    async buscarAllContatos(){
+
+        let retornoAtendimento: any
+
+        try {
+            retornoAtendimento = await createQueryBuilder("PessoasTelefones")
+                .leftJoinAndSelect('PessoasTelefones.contatosPessoasIdFK', 'cp')
+                .leftJoinAndSelect('PessoasTelefones.contatosTelefonesIdFK', 'ct')
+              //  .leftJoinAndSelect('PessoasTelefones', 'usuarioId')
+                .getMany()
+
+console.log(retornoAtendimento)
+
+            return retornoAtendimento
+        } catch (e) {
+            return e
+        }
+
+    }
+
+
 
 }
 

@@ -1,7 +1,7 @@
 
 import { ContatosPessoas } from "../../entity/ContatosPessoas";
 import { ContatosTelefones } from "../../entity/ContatosTelefones";
-import ContatosRepository from "../../repositoryDb/ContatosRepository";
+import ContatosRepository from "../../repository/ContatosRepository";
 
 export default class ContatosBusiness {
 

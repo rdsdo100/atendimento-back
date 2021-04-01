@@ -1,4 +1,4 @@
-import GrupoEmpresasRepository from "../../repositoryDb/GrupoEmpresasRepository"
+import GrupoEmpresasRepository from "../../repository/GrupoEmpresasRepository"
 
 export default class GrupoEmpresasBusiness {
 

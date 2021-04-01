@@ -5,6 +5,7 @@ import { ContatosTelefones } from "../../entity/ContatosTelefones";
 import { ContatosPessoas } from "../../entity/ContatosPessoas";
 import ContatosBusiness from "../../business/contatos/ContatosBusiness";
 import { Empresas } from "../../entity/Empresas";
+import ContatosRepository from "../../repository/ContatosRepository";
 
 
 @Controller('contato')
@@ -18,7 +19,15 @@ readonly empresa = new Empresas
 readonly contatosBusiness = new ContatosBusiness
 
     @Get()
-    async buscarContatosUsuarios(request: Request, response: Response) { }
+    async buscarContatosUsuarios(request: Request, response: Response) {
+
+const ok  = new ContatosRepository()
+
+const la = await ok.buscarAllContatos()
+response.status(200).json(la)
+
+
+     }
 
     @Post()
     async cadastrarContatos(request: Request, response: Response) { 
