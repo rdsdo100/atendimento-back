@@ -94,13 +94,25 @@ export default class ContatosRepository {
         let retornoAtendimento: any
 
         try {
-            retornoAtendimento = await createQueryBuilder("PessoasTelefones")
+           /* retornoAtendimento = await createQueryBuilder("PessoasTelefones")
+            .leftJoinAndSelect('PessoasTelefones.contatosTelefonesIdFK', 'ct')
                 .leftJoinAndSelect('PessoasTelefones.contatosPessoasIdFK', 'cp')
-                .leftJoinAndSelect('PessoasTelefones.contatosTelefonesIdFK', 'ct')
+            
               //  .leftJoinAndSelect('PessoasTelefones', 'usuarioId')
-                .getMany()
+             // .getQuery() 
+              .getMany()
+             */   
+            
 
-console.log(retornoAtendimento)
+              retornoAtendimento = await createQueryBuilder("ContatosPessoas" , "cp")
+            .leftJoinAndSelect('', 'ct')
+               // .leftJoinAndSelect('PessoasTelefones.contatosPessoasIdFK', 'cp')
+            
+              //  .leftJoinAndSelect('PessoasTelefones', 'usuarioId')
+             // .getQuery() 
+              .getMany()
+
+
 
             return retornoAtendimento
         } catch (e) {
