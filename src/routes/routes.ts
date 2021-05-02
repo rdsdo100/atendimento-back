@@ -7,6 +7,7 @@ import EmpresasController from '../controller/empresas/EmpresasController';
 import GrupoEmpresasController from '../controller/empresas/GrupoEmpresasController';
 import EquipeUsuarioController from '../controller/usuarios/EquipeUsuarioController';
 import ContatosController from '../controller/contatos/ContatosController';
+import ValidacaoCpfCnpjController from '../controller/valicadacao/ValidacaoCpfCnpjController';
 
 
 
@@ -19,6 +20,7 @@ const empresa = new EmpresasController()
 const grupoEmpresa = new GrupoEmpresasController()
 const equipeUsuarios = new EquipeUsuarioController()
 const contato = new ContatosController()
+const ValidarCpfCnpj = new ValidacaoCpfCnpjController()
 
 export const routes = [
     inicio,
@@ -29,6 +31,7 @@ export const routes = [
     empresa,
     grupoEmpresa,
     equipeUsuarios ,
-    contato 
+    contato,
+    ValidarCpfCnpj
 
 ]
