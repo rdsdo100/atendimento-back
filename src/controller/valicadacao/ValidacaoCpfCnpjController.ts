@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Controller, Get } from "@overnightjs/core";
+import { Controller, Post } from "@overnightjs/core";
 import ValidacaoCpfCnpjBusiness from "../../business/validacao/ValidacaoCpfCnpjBusiness";
 
 
@@ -9,7 +9,7 @@ import ValidacaoCpfCnpjBusiness from "../../business/validacao/ValidacaoCpfCnpjB
 export default class ValidacaoCpfCnpjController {
 readonly validacaoCpfCnpjBusiness = new ValidacaoCpfCnpjBusiness()
 
-    @Get()
+    @Post()
     async buscarAtendimentoUsuarios(request: Request, response: Response) {
 
         const cpfCnpj: string = String(request.body.cpfCnpj)
