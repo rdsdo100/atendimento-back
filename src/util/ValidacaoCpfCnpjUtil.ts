@@ -4,7 +4,7 @@ export default class ValidacaoCpfCnpjUtil {
 
 
 
-    arrumar(cpfCnpj: string): string[] {
+  private  arrumar(cpfCnpj: string): string[] {
 
 
         cpfCnpj = cpfCnpj.replace(/([^0-9])/g, '');
@@ -39,7 +39,7 @@ export default class ValidacaoCpfCnpjUtil {
 
     }
 
-    separar(cpfCnpjArray: string[]) {
+    private separar(cpfCnpjArray: string[]) {
 
         let resposta
         if (cpfCnpjArray.length === 14) {
@@ -53,7 +53,7 @@ export default class ValidacaoCpfCnpjUtil {
         return resposta
     }
 
-    validarCnpj(cpfCnpjArray: string[]) {
+    private validarCnpj(cpfCnpjArray: string[]) {
 
         let dv1: number = 5
         let dv2: number = 6
@@ -102,7 +102,7 @@ export default class ValidacaoCpfCnpjUtil {
 
     }
 
-    validarCpf(cpfCnpjArray: string[]) {
+    private validarCpf(cpfCnpjArray: string[]) {
         let dv1: number = 10
         let dv2: number = 11
         let somatorioDv1Mod: number = 0
